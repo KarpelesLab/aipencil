@@ -66,6 +66,16 @@ func (r *Registry) expandElements(elements []*scene.Element) ([]*scene.Element, 
 					return nil, err
 				}
 			}
+			// Recurse into layers
+			for _, layer := range el.Layers {
+				if len(layer.Elements) > 0 {
+					var err error
+					layer.Elements, err = r.expandElements(layer.Elements)
+					if err != nil {
+						return nil, err
+					}
+				}
+			}
 			result = append(result, el)
 		}
 	}

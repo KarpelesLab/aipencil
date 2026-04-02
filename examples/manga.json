@@ -6,7 +6,7 @@
   "elements": [
     {
       "type": "group",
-      "x": 8, "y": 8,
+      "position": {"x": "0", "y": "0", "anchor": "top-left", "offsetX": 8, "offsetY": 8},
       "layout": {"type": "row", "gap": 6},
       "children": [
         {
@@ -15,25 +15,48 @@
           "children": [
             {
               "type": "viewport",
-              "width": 236, "height": 335,
-              "padding": 0,
+              "width": 236, "height": 335, "padding": 0,
               "style": {"stroke": "#000", "strokeWidth": 3, "fill": "#e8f4ff"},
-              "children": [
-                {"type": "path", "d": "M 0 200 Q 80 170 160 190 Q 220 175 300 185 L 300 280 L 0 280 Z", "style": {"fill": "#7cb87c"}},
-                {"type": "use", "pattern": "person", "x": 40, "y": 110, "params": {"shirtColor": "#e74c3c", "hairColor": "#f1c40f", "skinColor": "#fdd0b0"}},
-                {"id": "alice1", "type": "use", "pattern": "face", "x": 190, "y": 140, "params": {"expression": "happy", "hairColor": "#2c3e50", "eyeColor": "#2980b9"}}
+              "layers": [
+                {
+                  "id": "p1-bg", "zIndex": 0,
+                  "elements": [
+                    {"type": "path", "d": "M 0 200 Q 80 170 160 190 Q 220 175 300 185 L 300 280 L 0 280 Z", "style": {"fill": "#7cb87c"}}
+                  ]
+                },
+                {
+                  "id": "p1-chars", "zIndex": 10,
+                  "elements": [
+                    {"type": "use", "pattern": "person", "x": 40, "y": 110, "params": {"shirtColor": "#e74c3c", "hairColor": "#f1c40f", "skinColor": "#fdd0b0"}},
+                    {"id": "alice1", "type": "use", "pattern": "face", "x": 190, "y": 140, "params": {"expression": "happy", "hairColor": "#2c3e50", "eyeColor": "#2980b9"}}
+                  ]
+                }
               ]
             },
             {
               "type": "viewport",
-              "width": 236, "height": 335,
-              "padding": 5,
+              "width": 236, "height": 335, "padding": 5,
               "style": {"stroke": "#000", "strokeWidth": 3, "fill": "#f0e8ff"},
-              "children": [
-                {"type": "path", "d": "M 0 220 Q 100 200 200 215 Q 250 210 300 220 L 300 280 L 0 280 Z", "style": {"fill": "#7cb87c"}},
-                {"id": "alice2", "type": "use", "pattern": "face", "x": 50, "y": 90, "params": {"expression": "surprised", "hairColor": "#f1c40f", "skinColor": "#fdd0b0", "eyeColor": "#27ae60"}},
-                {"id": "bob2", "type": "use", "pattern": "face", "x": 200, "y": 100, "params": {"expression": "happy", "hairColor": "#2c3e50", "eyeColor": "#2980b9"}},
-                {"type": "path", "d": "M 130 70 L 135 50 M 140 70 L 145 50 M 150 70 L 155 50", "style": {"fill": "none", "stroke": "#e74c3c", "strokeWidth": 3, "strokeLinecap": "round"}}
+              "layers": [
+                {
+                  "id": "p3-bg", "zIndex": 0,
+                  "elements": [
+                    {"type": "path", "d": "M 0 220 Q 100 200 200 215 Q 250 210 300 220 L 300 280 L 0 280 Z", "style": {"fill": "#7cb87c"}}
+                  ]
+                },
+                {
+                  "id": "p3-chars", "zIndex": 10,
+                  "elements": [
+                    {"id": "alice2", "type": "use", "pattern": "face", "x": 50, "y": 90, "params": {"expression": "surprised", "hairColor": "#f1c40f", "skinColor": "#fdd0b0", "eyeColor": "#27ae60"}},
+                    {"id": "bob2", "type": "use", "pattern": "face", "x": 200, "y": 100, "params": {"expression": "happy", "hairColor": "#2c3e50", "eyeColor": "#2980b9"}}
+                  ]
+                },
+                {
+                  "id": "p3-fx", "zIndex": 20,
+                  "elements": [
+                    {"type": "path", "d": "M 130 70 L 135 50 M 140 70 L 145 50 M 150 70 L 155 50", "style": {"fill": "none", "stroke": "#e74c3c", "strokeWidth": 3, "strokeLinecap": "round"}}
+                  ]
+                }
               ]
             }
           ]
@@ -44,31 +67,54 @@
           "children": [
             {
               "type": "viewport",
-              "width": 236, "height": 335,
-              "padding": 0,
+              "width": 236, "height": 335, "padding": 0,
               "style": {"stroke": "#000", "strokeWidth": 3, "fill": "#fff8e8"},
-              "children": [
-                {"type": "path", "d": "M 0 180 Q 100 160 200 175 Q 260 168 300 180 L 300 280 L 0 280 Z", "style": {"fill": "#7cb87c"}},
-                {"id": "bob1", "type": "use", "pattern": "person", "x": 120, "y": 80, "params": {"shirtColor": "#3498db", "hairColor": "#2c3e50", "pantsColor": "#34495e"}},
-                {"type": "circle", "x": 260, "y": 40, "r": 30, "style": {"fill": "#FFD700"}},
-                {"type": "line", "x": 260, "y": 0, "x2": 260, "y2": -8, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}},
-                {"type": "line", "x": 232, "y": 18, "x2": 225, "y2": 11, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}},
-                {"type": "line", "x": 288, "y": 18, "x2": 295, "y2": 11, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}},
-                {"type": "line", "x": 295, "y": 40, "x2": 305, "y2": 40, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}}
+              "layers": [
+                {
+                  "id": "p2-bg", "zIndex": 0,
+                  "elements": [
+                    {"type": "path", "d": "M 0 180 Q 100 160 200 175 Q 260 168 300 180 L 300 280 L 0 280 Z", "style": {"fill": "#7cb87c"}},
+                    {"type": "circle", "x": 260, "y": 40, "r": 30, "style": {"fill": "#FFD700"}},
+                    {"type": "line", "x": 260, "y": 0, "x2": 260, "y2": -8, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}},
+                    {"type": "line", "x": 232, "y": 18, "x2": 225, "y2": 11, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}},
+                    {"type": "line", "x": 288, "y": 18, "x2": 295, "y2": 11, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}},
+                    {"type": "line", "x": 295, "y": 40, "x2": 305, "y2": 40, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}}
+                  ]
+                },
+                {
+                  "id": "p2-chars", "zIndex": 10,
+                  "elements": [
+                    {"id": "bob1", "type": "use", "pattern": "person", "x": 120, "y": 80, "params": {"shirtColor": "#3498db", "hairColor": "#2c3e50", "pantsColor": "#34495e"}}
+                  ]
+                }
               ]
             },
             {
               "type": "viewport",
-              "width": 236, "height": 335,
-              "padding": 5,
+              "width": 236, "height": 335, "padding": 5,
               "style": {"stroke": "#000", "strokeWidth": 3, "fill": "#ffe8e8"},
-              "children": [
-                {"type": "path", "d": "M 0 200 Q 60 210 150 195 Q 230 210 300 200 L 300 280 L 0 280 Z", "style": {"fill": "#7cb87c"}},
-                {"id": "alice3", "type": "use", "pattern": "person", "x": 60, "y": 80, "params": {"shirtColor": "#e74c3c", "hairColor": "#f1c40f"}},
-                {"id": "bob3", "type": "use", "pattern": "person", "x": 180, "y": 80, "params": {"shirtColor": "#3498db", "hairColor": "#2c3e50"}},
-                {"type": "circle", "x": 260, "y": 40, "r": 15, "style": {"fill": "#ff6b8a"}},
-                {"type": "circle", "x": 60, "y": 50, "r": 12, "style": {"fill": "#ff6b8a"}},
-                {"type": "circle", "x": 150, "y": 30, "r": 10, "style": {"fill": "#ff6b8a", "opacity": 0.6}}
+              "layers": [
+                {
+                  "id": "p4-bg", "zIndex": 0,
+                  "elements": [
+                    {"type": "path", "d": "M 0 200 Q 60 210 150 195 Q 230 210 300 200 L 300 280 L 0 280 Z", "style": {"fill": "#7cb87c"}}
+                  ]
+                },
+                {
+                  "id": "p4-chars", "zIndex": 10,
+                  "elements": [
+                    {"id": "alice3", "type": "use", "pattern": "person", "x": 60, "y": 80, "params": {"shirtColor": "#e74c3c", "hairColor": "#f1c40f"}},
+                    {"id": "bob3", "type": "use", "pattern": "person", "x": 180, "y": 80, "params": {"shirtColor": "#3498db", "hairColor": "#2c3e50"}}
+                  ]
+                },
+                {
+                  "id": "p4-fx", "zIndex": 20,
+                  "elements": [
+                    {"type": "circle", "x": 260, "y": 40, "r": 15, "style": {"fill": "#ff6b8a"}},
+                    {"type": "circle", "x": 60, "y": 50, "r": 12, "style": {"fill": "#ff6b8a"}},
+                    {"type": "circle", "x": 150, "y": 30, "r": 10, "style": {"fill": "#ff6b8a", "opacity": 0.6}}
+                  ]
+                }
               ]
             }
           ]
