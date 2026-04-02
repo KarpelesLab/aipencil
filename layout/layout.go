@@ -220,6 +220,8 @@ func layoutGroup(el *scene.Element, s *scene.Scene) {
 		layoutStack(el)
 	case "graph":
 		layoutGraph(el, s.Elements)
+	case "ranked":
+		layoutRanked(el, s.Elements)
 	default: // "free"
 		layoutFree(el)
 	}

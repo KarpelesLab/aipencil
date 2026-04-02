@@ -89,6 +89,7 @@ func validateElement(el *Element, path string, ids map[string]bool) []string {
 			"free": true, "row": true, "column": true,
 			"grid": true, "stack": true, "graph": true,
 			"constrained": true,
+			"ranked": true,
 		}
 		if !validLayouts[el.Layout.Type] {
 			errs = append(errs, fmt.Sprintf("%s: unknown layout type %q", path, el.Layout.Type))
