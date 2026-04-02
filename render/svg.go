@@ -246,16 +246,21 @@ func renderText(sb *strings.Builder, el *scene.Element, s *scene.Scene, indent s
 	// SVG text x/y is the anchor/baseline point.
 	x, y := el.EffectiveX(), el.EffectiveY()
 
-	// Adjust x for text-anchor
-	switch anchor {
-	case "middle":
-		x += el.ComputedWidth / 2
-	case "end":
-		x += el.ComputedWidth
+	// Only adjust for text-anchor when the position was computed by layout
+	// (not explicit). Explicit x means the user chose the anchor point.
+	if el.X == nil {
+		switch anchor {
+		case "middle":
+			x += el.ComputedWidth / 2
+		case "end":
+			x += el.ComputedWidth
+		}
 	}
 
 	// Adjust y: dominant-baseline="central" means y is the vertical center
-	y += el.ComputedHeight / 2
+	if el.Y == nil {
+		y += el.ComputedHeight / 2
+	}
 
 	sb.WriteString(indent)
 	fmt.Fprintf(sb, `<text x="%s" y="%s" font-size="%s"`, ff(x), ff(y), ff(fontSize))
