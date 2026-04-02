@@ -32,45 +32,125 @@ func collectIDsRecursive(el *scene.Element, ids map[string]*scene.Element) {
 }
 
 // elementCenter returns the absolute center point of an element,
-// walking up the tree to accumulate group translations.
+// walking up the tree to accumulate group translations and viewport scaling.
 func elementCenter(el *scene.Element, elements []*scene.Element) (cx, cy float64) {
-	// Get the element's local center
-	localCX := el.EffectiveX() + el.ComputedWidth/2
-	localCY := el.EffectiveY() + el.ComputedHeight/2
-
-	// Find parent chain and accumulate translations
+	// findParentOffset now returns the fully transformed position including
+	// viewport scaling. The element's own position is accumulated as part
+	// of the recursive walk, so we just need to add the element's local
+	// center offset (half width/height), scaled by the parent chain's scale.
+	//
+	// For simplicity, we find the offset to the element itself (which includes
+	// the element's EffectiveX/Y already scaled), then add half-size.
+	// We need the scale at the element's level to adjust the half-size.
 	ox, oy := findParentOffset(el, elements)
-	return localCX + ox, localCY + oy
+
+	// The element's own position was already added in findOffsetRecursive
+	// when it matched target==current. So ox,oy is the top-left of the element
+	// in absolute space. We need to add half the element's rendered size.
+	// Since the element may be inside a viewport, we need the cumulative scale.
+	sx, sy := findScale(el, elements)
+	return ox + el.ComputedWidth*sx/2, oy + el.ComputedHeight*sy/2
+}
+
+// findScale returns the cumulative scale factor for an element from viewport transforms.
+func findScale(target *scene.Element, roots []*scene.Element) (float64, float64) {
+	for _, root := range roots {
+		if sx, sy, found := findScaleRecursive(target, root, 1, 1); found {
+			return sx, sy
+		}
+	}
+	return 1, 1
+}
+
+func findScaleRecursive(target, current *scene.Element, sx, sy float64) (float64, float64, bool) {
+	if current == target {
+		return sx, sy, true
+	}
+
+	childSX, childSY := sx, sy
+	if current.Type == "viewport" {
+		outerW := current.EffectiveWidth()
+		outerH := current.EffectiveHeight()
+		if current.ViewBox != nil {
+			childSX = sx * outerW / current.ViewBox.Width
+			childSY = sy * outerH / current.ViewBox.Height
+		} else {
+			_, _, vbW, vbH := computeViewBox(current)
+			if vbW > 0 && vbH > 0 {
+				childSX = sx * outerW / vbW
+				childSY = sy * outerH / vbH
+			}
+		}
+	}
+
+	for _, child := range current.Children {
+		if rx, ry, found := findScaleRecursive(target, child, childSX, childSY); found {
+			return rx, ry, true
+		}
+	}
+	for _, layer := range current.Layers {
+		for _, child := range layer.Elements {
+			if rx, ry, found := findScaleRecursive(target, child, childSX, childSY); found {
+				return rx, ry, true
+			}
+		}
+	}
+	return 0, 0, false
 }
 
 // findParentOffset finds the accumulated translation offset for an element
 // by walking the element tree.
 func findParentOffset(target *scene.Element, roots []*scene.Element) (x, y float64) {
 	for _, root := range roots {
-		if ox, oy, found := findOffsetRecursive(target, root, 0, 0); found {
+		if ox, oy, found := findOffsetRecursive(target, root, 0, 0, 1, 1); found {
 			return ox, oy
 		}
 	}
 	return 0, 0
 }
 
-func findOffsetRecursive(target, current *scene.Element, ox, oy float64) (float64, float64, bool) {
+func findOffsetRecursive(target, current *scene.Element, ox, oy, scaleX, scaleY float64) (float64, float64, bool) {
 	if current == target {
 		return ox, oy, true
 	}
 
-	// Accumulate this group's position
-	childOX := ox + current.EffectiveX()
-	childOY := oy + current.EffectiveY()
+	// Accumulate this element's position, applying current scale
+	childOX := ox + current.EffectiveX()*scaleX
+	childOY := oy + current.EffectiveY()*scaleY
+
+	// If this is a viewport, compute the viewBox scale transform
+	childScaleX, childScaleY := scaleX, scaleY
+	if current.Type == "viewport" {
+		// Viewport maps content coordinates through viewBox scaling
+		outerW := current.EffectiveWidth()
+		outerH := current.EffectiveHeight()
+		if current.ViewBox != nil {
+			childScaleX = scaleX * outerW / current.ViewBox.Width
+			childScaleY = scaleY * outerH / current.ViewBox.Height
+			// Adjust for viewBox origin offset
+			childOX -= current.ViewBox.X * childScaleX
+			childOY -= current.ViewBox.Y * childScaleY
+		} else {
+			// Auto-computed viewBox: we need to replicate the viewBox calculation
+			// from the renderer to get the correct scale
+			vbX, vbY, vbW, vbH := computeViewBox(current)
+			if vbW > 0 && vbH > 0 {
+				childScaleX = scaleX * outerW / vbW
+				childScaleY = scaleY * outerH / vbH
+				childOX -= vbX * childScaleX
+				childOY -= vbY * childScaleY
+			}
+		}
+	}
 
 	for _, child := range current.Children {
-		if rx, ry, found := findOffsetRecursive(target, child, childOX, childOY); found {
+		if rx, ry, found := findOffsetRecursive(target, child, childOX, childOY, childScaleX, childScaleY); found {
 			return rx, ry, true
 		}
 	}
 	for _, layer := range current.Layers {
 		for _, child := range layer.Elements {
-			if rx, ry, found := findOffsetRecursive(target, child, childOX, childOY); found {
+			if rx, ry, found := findOffsetRecursive(target, child, childOX, childOY, childScaleX, childScaleY); found {
 				return rx, ry, true
 			}
 		}
@@ -134,6 +214,49 @@ func clipToEdge(cx, cy, hw, hh, tx, ty float64) (float64, float64) {
 }
 
 // parseAnchorRef parses "nodeId" or "nodeId.anchor" into (id, anchor).
+// computeViewBox replicates the auto-viewBox calculation from renderViewport.
+func computeViewBox(el *scene.Element) (vbX, vbY, vbW, vbH float64) {
+	minX, minY := math.Inf(1), math.Inf(1)
+	var maxX, maxY float64
+
+	allChildren := el.Children
+	for _, layer := range el.Layers {
+		allChildren = append(allChildren, layer.Elements...)
+	}
+
+	for _, child := range allChildren {
+		cx := child.EffectiveX()
+		cy := child.EffectiveY()
+		if cx < minX {
+			minX = cx
+		}
+		if cy < minY {
+			minY = cy
+		}
+		right := cx + child.ComputedWidth
+		bottom := cy + child.ComputedHeight
+		if right > maxX {
+			maxX = right
+		}
+		if bottom > maxY {
+			maxY = bottom
+		}
+	}
+
+	if math.IsInf(minX, 1) {
+		minX = 0
+	}
+	if math.IsInf(minY, 1) {
+		minY = 0
+	}
+
+	pad := 10.0
+	if el.Padding != nil {
+		pad = *el.Padding
+	}
+	return minX - pad, minY - pad, (maxX - minX) + pad*2, (maxY - minY) + pad*2
+}
+
 func parseAnchorRef(ref string) (id, anchor string) {
 	if idx := strings.LastIndex(ref, "."); idx >= 0 {
 		candidate := ref[idx+1:]
