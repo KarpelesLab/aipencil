@@ -34,22 +34,15 @@ func collectIDsRecursive(el *scene.Element, ids map[string]*scene.Element) {
 // elementCenter returns the absolute center point of an element,
 // walking up the tree to accumulate group translations and viewport scaling.
 func elementCenter(el *scene.Element, elements []*scene.Element) (cx, cy float64) {
-	// findParentOffset now returns the fully transformed position including
-	// viewport scaling. The element's own position is accumulated as part
-	// of the recursive walk, so we just need to add the element's local
-	// center offset (half width/height), scaled by the parent chain's scale.
-	//
-	// For simplicity, we find the offset to the element itself (which includes
-	// the element's EffectiveX/Y already scaled), then add half-size.
-	// We need the scale at the element's level to adjust the half-size.
+	// findParentOffset returns the accumulated offset of the parent chain
+	// (NOT including the element's own position).
 	ox, oy := findParentOffset(el, elements)
 
-	// The element's own position was already added in findOffsetRecursive
-	// when it matched target==current. So ox,oy is the top-left of the element
-	// in absolute space. We need to add half the element's rendered size.
-	// Since the element may be inside a viewport, we need the cumulative scale.
+	// Get the scale factor at this element's level (from viewport transforms)
 	sx, sy := findScale(el, elements)
-	return ox + el.ComputedWidth*sx/2, oy + el.ComputedHeight*sy/2
+
+	// Add the element's own position and half-size, scaled appropriately
+	return ox + (el.EffectiveX()+el.ComputedWidth/2)*sx, oy + (el.EffectiveY()+el.ComputedHeight/2)*sy
 }
 
 // findScale returns the cumulative scale factor for an element from viewport transforms.
