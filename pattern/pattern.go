@@ -127,15 +127,18 @@ func (r *Registry) expandUse(el *scene.Element) (*scene.Element, error) {
 
 	// Create a group to wrap the expanded pattern
 	group := &scene.Element{
-		Type:     "group",
-		ID:       el.ID,
-		X:        el.X,
-		Y:        el.Y,
-		Width:    el.Width,
-		Height:   el.Height,
-		Style:    el.Style,
-		Class:    el.Class,
-		Children: children,
+		Type:        "group",
+		ID:          el.ID,
+		X:           el.X,
+		Y:           el.Y,
+		Width:       el.Width,
+		Height:      el.Height,
+		Style:       el.Style,
+		Class:       el.Class,
+		Position:    el.Position,
+		Constraints: el.Constraints,
+		Transform:   el.Transform,
+		Children:    children,
 	}
 
 	// If the use element specifies a different size than the pattern's natural size,
