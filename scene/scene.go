@@ -79,6 +79,15 @@ type Element struct {
 	ViewBox *ViewBox `json:"viewBox,omitempty"` // explicit content region; auto-computed if nil
 	Padding *float64 `json:"padding,omitempty"` // viewport inner padding (default 10)
 
+	// Layers (mutually exclusive with Children)
+	Layers []*Layer `json:"layers,omitempty"`
+
+	// Relative positioning
+	Position *Position `json:"position,omitempty"`
+
+	// Constraint solver
+	Constraints []*Constraint `json:"constraints,omitempty"`
+
 	// Computed by layout engine (not serialized)
 	ComputedX      float64 `json:"-"`
 	ComputedY      float64 `json:"-"`
@@ -115,12 +124,13 @@ type Transform struct {
 
 // Layout controls how a group positions its children.
 type Layout struct {
-	Type       string  `json:"type"`
-	Gap        float64 `json:"gap,omitempty"`
-	Align      string  `json:"align,omitempty"`
-	Columns    int     `json:"columns,omitempty"`
-	CellWidth  float64 `json:"cellWidth,omitempty"`
-	CellHeight float64 `json:"cellHeight,omitempty"`
+	Type       string        `json:"type"`
+	Gap        float64       `json:"gap,omitempty"`
+	Align      string        `json:"align,omitempty"`
+	Columns    int           `json:"columns,omitempty"`
+	CellWidth  float64       `json:"cellWidth,omitempty"`
+	CellHeight float64       `json:"cellHeight,omitempty"`
+	Rules      []*LayoutRule `json:"rules,omitempty"` // container-level constraints
 }
 
 // ViewBox defines the content coordinate region for a viewport.
@@ -129,6 +139,52 @@ type ViewBox struct {
 	Y      float64 `json:"y"`
 	Width  float64 `json:"width"`
 	Height float64 `json:"height"`
+}
+
+// Position provides simple relative positioning for an element.
+type Position struct {
+	X        string  `json:"x,omitempty"`        // absolute px or "50%" of parent
+	Y        string  `json:"y,omitempty"`        // absolute px or "50%" of parent
+	Anchor   string  `json:"anchor,omitempty"`   // top-left, center, bottom-right, etc.
+	Below    string  `json:"below,omitempty"`    // element ID: position below
+	Above    string  `json:"above,omitempty"`    // element ID: position above
+	RightOf  string  `json:"rightOf,omitempty"`  // element ID: position right of
+	LeftOf   string  `json:"leftOf,omitempty"`   // element ID: position left of
+	CenterOn string  `json:"centerOn,omitempty"` // element ID: center on
+	AlignX   string  `json:"alignX,omitempty"`   // left, center, right
+	AlignY   string  `json:"alignY,omitempty"`   // top, center, bottom
+	Gap      float64 `json:"gap,omitempty"`      // spacing for relative positioning
+	OffsetX  float64 `json:"offsetX,omitempty"`  // additional X offset
+	OffsetY  float64 `json:"offsetY,omitempty"`  // additional Y offset
+}
+
+// Constraint defines a relationship on an element's attribute.
+type Constraint struct {
+	Attr     string `json:"attr"`              // left, right, top, bottom, width, height, centerX, centerY
+	Eq       string `json:"eq,omitempty"`       // equal to expression
+	Gte      string `json:"gte,omitempty"`      // >= expression
+	Lte      string `json:"lte,omitempty"`      // <= expression
+	Strength string `json:"strength,omitempty"` // required, strong, medium, weak
+}
+
+// LayoutRule defines a container-level constraint.
+type LayoutRule struct {
+	Match      any     `json:"match"`                    // "*", element ID, or array of IDs
+	Attr       string  `json:"attr,omitempty"`            // attribute to constrain
+	Eq         any     `json:"eq,omitempty"`              // value or expression
+	SameAttr   string  `json:"sameAttr,omitempty"`        // force same value
+	NoOverlap  bool    `json:"noOverlap,omitempty"`       // prevent overlap
+	Distribute string  `json:"distribute,omitempty"`      // "horizontal" or "vertical"
+	Gap        float64 `json:"gap,omitempty"`             // gap for distribute
+}
+
+// Layer represents a z-ordered rendering layer within a container.
+type Layer struct {
+	ID       string     `json:"id,omitempty"`
+	ZIndex   int        `json:"zIndex,omitempty"`
+	Layout   *Layout    `json:"layout,omitempty"`
+	Style    *Style     `json:"style,omitempty"`
+	Elements []*Element `json:"elements"`
 }
 
 // Def is a reusable pattern/template definition.

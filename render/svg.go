@@ -3,6 +3,7 @@ package render
 import (
 	"fmt"
 	"math"
+	"sort"
 	"strings"
 	"sync/atomic"
 
@@ -357,12 +358,44 @@ func renderGroup(sb *strings.Builder, el *scene.Element, s *scene.Scene, indent 
 	writeStyleAttrs(sb, resolveStyle(el, s))
 	sb.WriteString(">\n")
 
-	for _, child := range el.Children {
-		renderElement(sb, child, s, indent+"  ")
+	if len(el.Layers) > 0 {
+		renderLayers(sb, el.Layers, s, indent+"  ")
+	} else {
+		for _, child := range el.Children {
+			renderElement(sb, child, s, indent+"  ")
+		}
 	}
 
 	sb.WriteString(indent)
 	sb.WriteString("</g>\n")
+}
+
+func renderLayers(sb *strings.Builder, layers []*scene.Layer, s *scene.Scene, indent string) {
+	// Sort by zIndex (stable)
+	sorted := make([]*scene.Layer, len(layers))
+	copy(sorted, layers)
+	sort.SliceStable(sorted, func(i, j int) bool {
+		return sorted[i].ZIndex < sorted[j].ZIndex
+	})
+
+	for _, layer := range sorted {
+		sb.WriteString(indent)
+		sb.WriteString("<g")
+		if layer.ID != "" {
+			fmt.Fprintf(sb, ` id="layer-%s"`, escAttr(layer.ID))
+		}
+		if layer.Style != nil {
+			writeStyleAttrs(sb, layer.Style)
+		}
+		sb.WriteString(">\n")
+
+		for _, child := range layer.Elements {
+			renderElement(sb, child, s, indent+"  ")
+		}
+
+		sb.WriteString(indent)
+		sb.WriteString("</g>\n")
+	}
 }
 
 func renderPanel(sb *strings.Builder, el *scene.Element, s *scene.Scene, indent string) {
@@ -422,12 +455,19 @@ func renderViewport(sb *strings.Builder, el *scene.Element, s *scene.Scene, inde
 		vbW = el.ViewBox.Width
 		vbH = el.ViewBox.Height
 	} else {
-		// Auto-compute from children bounding box
+		// Auto-compute from children/layers bounding box
 		var minX, minY float64
 		minX, minY = math.Inf(1), math.Inf(1)
 		var maxX, maxY float64
 
-		for _, child := range el.Children {
+		allChildren := el.Children
+		if len(el.Layers) > 0 {
+			for _, layer := range el.Layers {
+				allChildren = append(allChildren, layer.Elements...)
+			}
+		}
+
+		for _, child := range allChildren {
 			cx := child.EffectiveX()
 			cy := child.EffectiveY()
 			if cx < minX {
@@ -501,9 +541,13 @@ func renderViewport(sb *strings.Builder, el *scene.Element, s *scene.Scene, inde
 		sb.WriteByte('\n')
 	}
 
-	// Render children
-	for _, child := range el.Children {
-		renderElement(sb, child, s, indent+"  ")
+	// Render children or layers
+	if len(el.Layers) > 0 {
+		renderLayers(sb, el.Layers, s, indent+"  ")
+	} else {
+		for _, child := range el.Children {
+			renderElement(sb, child, s, indent+"  ")
+		}
 	}
 
 	sb.WriteString(indent)

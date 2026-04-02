@@ -24,6 +24,11 @@ func collectIDsRecursive(el *scene.Element, ids map[string]*scene.Element) {
 	for _, child := range el.Children {
 		collectIDsRecursive(child, ids)
 	}
+	for _, layer := range el.Layers {
+		for _, child := range layer.Elements {
+			collectIDsRecursive(child, ids)
+		}
+	}
 }
 
 // elementCenter returns the absolute center point of an element,
@@ -61,6 +66,13 @@ func findOffsetRecursive(target, current *scene.Element, ox, oy float64) (float6
 	for _, child := range current.Children {
 		if rx, ry, found := findOffsetRecursive(target, child, childOX, childOY); found {
 			return rx, ry, true
+		}
+	}
+	for _, layer := range current.Layers {
+		for _, child := range layer.Elements {
+			if rx, ry, found := findOffsetRecursive(target, child, childOX, childOY); found {
+				return rx, ry, true
+			}
 		}
 	}
 	return 0, 0, false

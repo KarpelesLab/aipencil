@@ -13,12 +13,21 @@ import (
 // 2. Place pass (top-down) — assign positions
 // 3. Canvas auto-size if needed
 func Layout(s *scene.Scene) {
-	// Measure all elements
+	// Build global ID registry
+	idMap := BuildIDMap(s.Elements, s)
+
+	// Measure all elements (bottom-up)
 	for _, el := range s.Elements {
 		measure(el, s)
 	}
 
-	// Place elements that lack explicit positions
+	// Resolve relative positions (position field)
+	ResolvePositions(s.Elements, idMap)
+
+	// Run constraint solver
+	SolveConstraints(s.Elements, idMap)
+
+	// Place remaining unpositioned elements
 	placeChildren(s.Elements, nil, s)
 
 	// Auto-size canvas
@@ -109,7 +118,11 @@ func measure(el *scene.Element, s *scene.Scene) {
 		el.ComputedHeight = valOr(el.Height, 100)
 
 	case "group":
-		layoutGroup(el, s)
+		if len(el.Layers) > 0 {
+			MeasureLayers(el, s)
+		} else {
+			layoutGroup(el, s)
+		}
 
 	case "panel":
 		el.ComputedWidth = valOr(el.Width, 300)
@@ -119,21 +132,29 @@ func measure(el *scene.Element, s *scene.Scene) {
 		}
 
 	case "viewport":
-		// Measure children first to compute content bounds
-		for _, child := range el.Children {
-			measure(child, s)
+		// Measure children/layers first to compute content bounds
+		if len(el.Layers) > 0 {
+			MeasureLayers(el, s)
+		} else {
+			for _, child := range el.Children {
+				measure(child, s)
+			}
 		}
 		// Outer size: explicit or computed from content
+		children := el.Children
+		if len(el.Layers) > 0 {
+			children = AllLayerElements(el.Layers)
+		}
 		if el.Width != nil {
 			el.ComputedWidth = *el.Width
 		} else {
-			cw, _ := childBounds(el.Children)
+			cw, _ := childBounds(children)
 			el.ComputedWidth = cw + 20 // padding
 		}
 		if el.Height != nil {
 			el.ComputedHeight = *el.Height
 		} else {
-			_, ch := childBounds(el.Children)
+			_, ch := childBounds(children)
 			el.ComputedHeight = ch + 20
 		}
 

@@ -88,14 +88,27 @@ func validateElement(el *Element, path string, ids map[string]bool) []string {
 		validLayouts := map[string]bool{
 			"free": true, "row": true, "column": true,
 			"grid": true, "stack": true, "graph": true,
+			"constrained": true,
 		}
 		if !validLayouts[el.Layout.Type] {
 			errs = append(errs, fmt.Sprintf("%s: unknown layout type %q", path, el.Layout.Type))
 		}
 	}
 
+	// Layers and children are mutually exclusive
+	if len(el.Layers) > 0 && len(el.Children) > 0 {
+		errs = append(errs, fmt.Sprintf("%s: cannot have both 'layers' and 'children'", path))
+	}
+
 	for i, child := range el.Children {
 		errs = append(errs, validateElement(child, fmt.Sprintf("%s.children[%d]", path, i), ids)...)
+	}
+
+	for i, layer := range el.Layers {
+		lpath := fmt.Sprintf("%s.layers[%d]", path, i)
+		for j, child := range layer.Elements {
+			errs = append(errs, validateElement(child, fmt.Sprintf("%s.elements[%d]", lpath, j), ids)...)
+		}
 	}
 
 	return errs

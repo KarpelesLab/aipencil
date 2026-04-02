@@ -96,4 +96,9 @@ func applyElementDefaults(el *Element) {
 	for _, child := range el.Children {
 		applyElementDefaults(child)
 	}
+	for _, layer := range el.Layers {
+		for _, child := range layer.Elements {
+			applyElementDefaults(child)
+		}
+	}
 }
