@@ -90,6 +90,8 @@ func renderElement(sb *strings.Builder, el *scene.Element, s *scene.Scene, inden
 		renderGroup(sb, el, s, indent)
 	case "panel":
 		renderPanel(sb, el, s, indent)
+	case "viewport":
+		renderViewport(sb, el, s, indent)
 	}
 }
 
@@ -405,6 +407,119 @@ func renderPanel(sb *strings.Builder, el *scene.Element, s *scene.Scene, indent 
 
 	sb.WriteString(indent)
 	sb.WriteString("</g>\n")
+}
+
+func renderViewport(sb *strings.Builder, el *scene.Element, s *scene.Scene, indent string) {
+	x, y := el.EffectiveX(), el.EffectiveY()
+	outerW := el.EffectiveWidth()
+	outerH := el.EffectiveHeight()
+
+	// Compute viewBox from explicit setting or children bounds
+	var vbX, vbY, vbW, vbH float64
+	if el.ViewBox != nil {
+		vbX = el.ViewBox.X
+		vbY = el.ViewBox.Y
+		vbW = el.ViewBox.Width
+		vbH = el.ViewBox.Height
+	} else {
+		// Auto-compute from children bounding box
+		var minX, minY float64
+		minX, minY = math.Inf(1), math.Inf(1)
+		var maxX, maxY float64
+
+		for _, child := range el.Children {
+			cx := child.EffectiveX()
+			cy := child.EffectiveY()
+			if cx < minX {
+				minX = cx
+			}
+			if cy < minY {
+				minY = cy
+			}
+			right := cx + child.ComputedWidth
+			bottom := cy + child.ComputedHeight
+			if right > maxX {
+				maxX = right
+			}
+			if bottom > maxY {
+				maxY = bottom
+			}
+		}
+
+		if math.IsInf(minX, 1) {
+			minX = 0
+		}
+		if math.IsInf(minY, 1) {
+			minY = 0
+		}
+
+		// Add padding around content
+		pad := 10.0
+		if el.Padding != nil {
+			pad = *el.Padding
+		}
+		vbX = minX - pad
+		vbY = minY - pad
+		vbW = (maxX - minX) + pad*2
+		vbH = (maxY - minY) + pad*2
+
+		if vbW <= 0 {
+			vbW = outerW
+		}
+		if vbH <= 0 {
+			vbH = outerH
+		}
+	}
+
+	style := resolveStyle(el, s)
+
+	// Determine clipping
+	clip := true
+	if el.Clip != nil {
+		clip = *el.Clip
+	}
+
+	overflow := "hidden"
+	if !clip {
+		overflow = "visible"
+	}
+
+	// Render as nested <svg> with viewBox
+	sb.WriteString(indent)
+	fmt.Fprintf(sb, `<svg x="%s" y="%s" width="%s" height="%s" viewBox="%s %s %s %s" overflow="%s"`,
+		ff(x), ff(y), ff(outerW), ff(outerH),
+		ff(vbX), ff(vbY), ff(vbW), ff(vbH), overflow)
+	if el.ID != "" {
+		fmt.Fprintf(sb, ` id="%s"`, escAttr(el.ID))
+	}
+	sb.WriteString(">\n")
+
+	// Background fill
+	if style != nil && style.Fill != "" {
+		fmt.Fprintf(sb, `%s  <rect x="%s" y="%s" width="%s" height="%s" fill="%s"/>`,
+			indent, ff(vbX), ff(vbY), ff(vbW), ff(vbH), escAttr(style.Fill))
+		sb.WriteByte('\n')
+	}
+
+	// Render children
+	for _, child := range el.Children {
+		renderElement(sb, child, s, indent+"  ")
+	}
+
+	sb.WriteString(indent)
+	sb.WriteString("</svg>\n")
+
+	// Border rect outside the nested svg (in parent coordinate space)
+	if style != nil && style.Stroke != "" {
+		strokeWidth := 2.0
+		if style.StrokeWidth != nil {
+			strokeWidth = *style.StrokeWidth
+		}
+		sb.WriteString(indent)
+		fmt.Fprintf(sb, `<rect x="%s" y="%s" width="%s" height="%s" fill="none" stroke="%s" stroke-width="%s"/>`,
+			ff(x), ff(y), ff(outerW), ff(outerH), escAttr(style.Stroke), ff(strokeWidth))
+		sb.WriteByte('\n')
+	}
 }
 
 // resolveStyle merges class + inline styles for an element.

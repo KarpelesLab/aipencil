@@ -114,9 +114,27 @@ func measure(el *scene.Element, s *scene.Scene) {
 	case "panel":
 		el.ComputedWidth = valOr(el.Width, 300)
 		el.ComputedHeight = valOr(el.Height, 200)
-		// Measure children inside panel
 		for _, child := range el.Children {
 			measure(child, s)
+		}
+
+	case "viewport":
+		// Measure children first to compute content bounds
+		for _, child := range el.Children {
+			measure(child, s)
+		}
+		// Outer size: explicit or computed from content
+		if el.Width != nil {
+			el.ComputedWidth = *el.Width
+		} else {
+			cw, _ := childBounds(el.Children)
+			el.ComputedWidth = cw + 20 // padding
+		}
+		if el.Height != nil {
+			el.ComputedHeight = *el.Height
+		} else {
+			_, ch := childBounds(el.Children)
+			el.ComputedHeight = ch + 20
 		}
 
 	case "bubble":
@@ -441,6 +459,23 @@ func resolveStyleForLayout(el *scene.Element, s *scene.Scene) *scene.Style {
 		classStyle = s.Styles[el.Class]
 	}
 	return scene.ResolveStyle(classStyle, el.Style)
+}
+
+// childBounds computes the bounding box extent of all children.
+func childBounds(children []*scene.Element) (maxX, maxY float64) {
+	for _, child := range children {
+		x := valOr(child.X, child.ComputedX)
+		y := valOr(child.Y, child.ComputedY)
+		right := x + child.ComputedWidth
+		bottom := y + child.ComputedHeight
+		if right > maxX {
+			maxX = right
+		}
+		if bottom > maxY {
+			maxY = bottom
+		}
+	}
+	return
 }
 
 func measureBubble(el *scene.Element, s *scene.Scene) {

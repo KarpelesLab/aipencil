@@ -74,6 +74,11 @@ type Element struct {
 	// Conditional (for pattern elements)
 	If string `json:"if,omitempty"`
 
+	// Viewport fields
+	Clip    *bool    `json:"clip,omitempty"`    // clip content to viewport bounds (default true)
+	ViewBox *ViewBox `json:"viewBox,omitempty"` // explicit content region; auto-computed if nil
+	Padding *float64 `json:"padding,omitempty"` // viewport inner padding (default 10)
+
 	// Computed by layout engine (not serialized)
 	ComputedX      float64 `json:"-"`
 	ComputedY      float64 `json:"-"`
@@ -116,6 +121,14 @@ type Layout struct {
 	Columns    int     `json:"columns,omitempty"`
 	CellWidth  float64 `json:"cellWidth,omitempty"`
 	CellHeight float64 `json:"cellHeight,omitempty"`
+}
+
+// ViewBox defines the content coordinate region for a viewport.
+type ViewBox struct {
+	X      float64 `json:"x"`
+	Y      float64 `json:"y"`
+	Width  float64 `json:"width"`
+	Height float64 `json:"height"`
 }
 
 // Def is a reusable pattern/template definition.

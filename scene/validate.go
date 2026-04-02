@@ -20,6 +20,7 @@ var knownTypes = map[string]bool{
 	"arrow":    true,
 	"panel":    true,
 	"bubble":   true,
+	"viewport": true,
 }
 
 // Validate checks a parsed Scene for structural errors.

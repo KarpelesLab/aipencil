@@ -85,6 +85,8 @@ func applyElementDefaults(el *Element) {
 		if el.Height == nil {
 			el.Height = Ptr(200)
 		}
+	case "viewport":
+		// viewport size can be set by layout; no hard defaults
 	}
 
 	if el.Layout != nil && el.Layout.Type == "" {
