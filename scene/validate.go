@@ -18,6 +18,8 @@ var knownTypes = map[string]bool{
 	"group":    true,
 	"use":      true,
 	"arrow":    true,
+	"panel":    true,
+	"bubble":   true,
 }
 
 // Validate checks a parsed Scene for structural errors.
@@ -66,6 +68,14 @@ func validateElement(el *Element, path string, ids map[string]bool) []string {
 	case "use":
 		if el.Pattern == "" {
 			errs = append(errs, fmt.Sprintf("%s: use element requires 'pattern' field", path))
+		}
+	case "bubble":
+		if el.Text == "" {
+			errs = append(errs, fmt.Sprintf("%s: bubble requires 'text' field", path))
+		}
+	case "panel":
+		if len(el.Children) == 0 {
+			errs = append(errs, fmt.Sprintf("%s: panel requires children", path))
 		}
 	case "image":
 		if el.Href == "" {

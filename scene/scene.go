@@ -53,12 +53,16 @@ type Element struct {
 	// Image fields
 	Href string `json:"href,omitempty"`
 
-	// Arrow fields
+	// Arrow/bubble target fields
 	From      string `json:"from,omitempty"`
 	To        string `json:"to,omitempty"`
+	Target    string `json:"target,omitempty"` // bubble tail target element ID
 	Label     string `json:"label,omitempty"`
 	HeadStyle string `json:"headStyle,omitempty"`
 	Curve     string `json:"curve,omitempty"`
+
+	// Bubble fields
+	BubbleStyle string `json:"bubbleStyle,omitempty"` // speech, thought, shout
 
 	// Group layout
 	Layout *Layout `json:"layout,omitempty"`

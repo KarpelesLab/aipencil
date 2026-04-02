@@ -74,6 +74,17 @@ func applyElementDefaults(el *Element) {
 		if el.Curve == "" {
 			el.Curve = "straight"
 		}
+	case "bubble":
+		if el.BubbleStyle == "" {
+			el.BubbleStyle = "speech"
+		}
+	case "panel":
+		if el.Width == nil {
+			el.Width = Ptr(300)
+		}
+		if el.Height == nil {
+			el.Height = Ptr(200)
+		}
 	}
 
 	if el.Layout != nil && el.Layout.Type == "" {

@@ -4,9 +4,12 @@ import (
 	"fmt"
 	"math"
 	"strings"
+	"sync/atomic"
 
 	"github.com/KarpelesLab/aipencil/scene"
 )
+
+var clipIDCounter atomic.Int64
 
 // RenderSVG produces an SVG string from a laid-out Scene.
 func RenderSVG(s *scene.Scene) string {
@@ -46,15 +49,18 @@ func RenderSVG(s *scene.Scene) string {
 		sb.WriteByte('\n')
 	}
 
-	// Render non-arrow elements
+	// Render non-arrow/non-bubble elements
 	for _, el := range s.Elements {
-		if el.Type != "arrow" {
+		if el.Type != "arrow" && el.Type != "bubble" {
 			renderElement(&sb, el, s, "  ")
 		}
 	}
 
-	// Render arrows last (on top of everything)
+	// Render arrows on top of elements
 	renderArrows(&sb, s.Elements, s, "  ")
+
+	// Render bubbles on top of everything
+	renderBubbles(&sb, s.Elements, s.Elements, s, "  ")
 
 	sb.WriteString("</svg>\n")
 	return sb.String()
@@ -82,6 +88,8 @@ func renderElement(sb *strings.Builder, el *scene.Element, s *scene.Scene, inden
 		renderImage(sb, el, s, indent)
 	case "group":
 		renderGroup(sb, el, s, indent)
+	case "panel":
+		renderPanel(sb, el, s, indent)
 	}
 }
 
@@ -341,6 +349,50 @@ func renderGroup(sb *strings.Builder, el *scene.Element, s *scene.Scene, indent 
 	for _, child := range el.Children {
 		renderElement(sb, child, s, indent+"  ")
 	}
+
+	sb.WriteString(indent)
+	sb.WriteString("</g>\n")
+}
+
+func renderPanel(sb *strings.Builder, el *scene.Element, s *scene.Scene, indent string) {
+	x, y := el.EffectiveX(), el.EffectiveY()
+	w := el.EffectiveWidth()
+	h := el.EffectiveHeight()
+	clipID := fmt.Sprintf("panel-clip-%d", clipIDCounter.Add(1))
+
+	style := resolveStyle(el, s)
+	borderStroke := "#000"
+	borderWidth := 2.0
+	if style != nil {
+		if style.Stroke != "" {
+			borderStroke = style.Stroke
+		}
+		if style.StrokeWidth != nil {
+			borderWidth = *style.StrokeWidth
+		}
+	}
+
+	sb.WriteString(indent)
+	sb.WriteString("<g")
+	if el.ID != "" {
+		fmt.Fprintf(sb, ` id="%s"`, escAttr(el.ID))
+	}
+	sb.WriteString(">\n")
+
+	// ClipPath in local coordinates (the translate on the content group handles positioning)
+	fmt.Fprintf(sb, "%s  <defs><clipPath id=\"%s\"><rect x=\"0\" y=\"0\" width=\"%s\" height=\"%s\"/></clipPath></defs>\n",
+		indent, clipID, ff(w), ff(h))
+
+	// Clipped content group — translate so children are in panel-local coordinates
+	fmt.Fprintf(sb, "%s  <g clip-path=\"url(#%s)\" transform=\"translate(%s,%s)\">\n", indent, clipID, ff(x), ff(y))
+	for _, child := range el.Children {
+		renderElement(sb, child, s, indent+"    ")
+	}
+	fmt.Fprintf(sb, "%s  </g>\n", indent)
+
+	// Border on top
+	fmt.Fprintf(sb, "%s  <rect x=\"%s\" y=\"%s\" width=\"%s\" height=\"%s\" fill=\"none\" stroke=\"%s\" stroke-width=\"%s\"/>\n",
+		indent, ff(x), ff(y), ff(w), ff(h), escAttr(borderStroke), ff(borderWidth))
 
 	sb.WriteString(indent)
 	sb.WriteString("</g>\n")

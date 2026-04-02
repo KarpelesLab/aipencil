@@ -111,6 +111,17 @@ func measure(el *scene.Element, s *scene.Scene) {
 	case "group":
 		layoutGroup(el, s)
 
+	case "panel":
+		el.ComputedWidth = valOr(el.Width, 300)
+		el.ComputedHeight = valOr(el.Height, 200)
+		// Measure children inside panel
+		for _, child := range el.Children {
+			measure(child, s)
+		}
+
+	case "bubble":
+		measureBubble(el, s)
+
 	case "polygon", "polyline":
 		if len(el.Points) > 0 {
 			var maxX, maxY float64
@@ -430,6 +441,42 @@ func resolveStyleForLayout(el *scene.Element, s *scene.Scene) *scene.Style {
 		classStyle = s.Styles[el.Class]
 	}
 	return scene.ResolveStyle(classStyle, el.Style)
+}
+
+func measureBubble(el *scene.Element, s *scene.Scene) {
+	// Auto-size bubble to fit text
+	fontSize := 14.0
+	fontWeight := ""
+	style := resolveStyleForLayout(el, s)
+	if el.FontSize != nil {
+		fontSize = *el.FontSize
+	} else if style != nil && style.FontSize != nil {
+		fontSize = *style.FontSize
+	}
+	if style != nil && style.FontWeight != "" {
+		fontWeight = style.FontWeight
+	}
+
+	padding := 16.0
+	maxW := valOr(el.MaxWidth, 200)
+
+	// Split on explicit newlines first, then wrap each segment
+	var lines []string
+	for _, seg := range strings.Split(el.Text, "\n") {
+		lines = append(lines, font.WrapText(seg, maxW-padding*2, fontSize, fontWeight)...)
+	}
+	textW, textH := font.MeasureLines(lines, fontSize, fontWeight, 1.4)
+
+	if el.Width != nil {
+		el.ComputedWidth = *el.Width
+	} else {
+		el.ComputedWidth = textW + padding*2
+	}
+	if el.Height != nil {
+		el.ComputedHeight = *el.Height
+	} else {
+		el.ComputedHeight = textH + padding*2
+	}
 }
 
 func valOr(p *float64, def float64) float64 {

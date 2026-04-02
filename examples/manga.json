@@ -1,0 +1,76 @@
+{
+  "width": 500,
+  "height": 700,
+  "padding": 0,
+  "background": "#ffffff",
+  "elements": [
+    {
+      "type": "group",
+      "layout": {"type": "grid", "columns": 2, "gap": 6},
+      "x": 10, "y": 10,
+      "children": [
+        {
+          "type": "panel",
+          "width": 234,
+          "height": 330,
+          "style": {"stroke": "#000", "strokeWidth": 3},
+          "children": [
+            {"type": "rect", "x": 0, "y": 0, "width": 234, "height": 330, "style": {"fill": "#e8f4ff"}},
+            {"type": "path", "d": "M 0 280 Q 60 260 120 270 Q 180 250 234 265 L 234 330 L 0 330 Z", "style": {"fill": "#7cb87c"}},
+            {"type": "use", "pattern": "person", "x": 40, "y": 160, "params": {"label": "", "shirtColor": "#e74c3c", "hairColor": "#f1c40f", "skinColor": "#fdd0b0"}},
+            {"id": "alice1", "type": "use", "pattern": "face", "x": 150, "y": 200, "params": {"expression": "happy", "hairColor": "#2c3e50", "eyeColor": "#2980b9"}}
+          ]
+        },
+        {
+          "type": "panel",
+          "width": 234,
+          "height": 330,
+          "style": {"stroke": "#000", "strokeWidth": 3},
+          "children": [
+            {"type": "rect", "x": 0, "y": 0, "width": 234, "height": 330, "style": {"fill": "#fff8e8"}},
+            {"type": "path", "d": "M 0 250 Q 80 230 160 245 Q 200 240 234 250 L 234 330 L 0 330 Z", "style": {"fill": "#7cb87c"}},
+            {"id": "bob1", "type": "use", "pattern": "person", "x": 90, "y": 140, "params": {"label": "", "shirtColor": "#3498db", "hairColor": "#2c3e50", "pantsColor": "#34495e"}},
+            {"type": "circle", "x": 200, "y": 50, "r": 30, "style": {"fill": "#FFD700"}},
+            {"type": "line", "x": 200, "y": 10, "x2": 200, "y2": 0, "style": {"stroke": "#FFD700", "strokeWidth": 2, "strokeLinecap": "round"}},
+            {"type": "line", "x": 172, "y": 30, "x2": 165, "y2": 23, "style": {"stroke": "#FFD700", "strokeWidth": 2, "strokeLinecap": "round"}},
+            {"type": "line", "x": 228, "y": 30, "x2": 235, "y2": 23, "style": {"stroke": "#FFD700", "strokeWidth": 2, "strokeLinecap": "round"}},
+            {"type": "line", "x": 235, "y": 50, "x2": 245, "y2": 50, "style": {"stroke": "#FFD700", "strokeWidth": 2, "strokeLinecap": "round"}}
+          ]
+        },
+        {
+          "type": "panel",
+          "width": 234,
+          "height": 330,
+          "style": {"stroke": "#000", "strokeWidth": 3},
+          "children": [
+            {"type": "rect", "x": 0, "y": 0, "width": 234, "height": 330, "style": {"fill": "#f0e8ff"}},
+            {"type": "path", "d": "M 0 300 Q 117 270 234 300 L 234 330 L 0 330 Z", "style": {"fill": "#7cb87c"}},
+            {"id": "alice2", "type": "use", "pattern": "face", "x": 50, "y": 130, "params": {"expression": "surprised", "hairColor": "#f1c40f", "skinColor": "#fdd0b0", "eyeColor": "#27ae60"}},
+            {"id": "bob2", "type": "use", "pattern": "face", "x": 155, "y": 140, "params": {"expression": "happy", "hairColor": "#2c3e50", "eyeColor": "#2980b9"}},
+            {"type": "path", "d": "M 105 100 L 110 80 M 115 100 L 120 80 M 125 100 L 130 80", "style": {"fill": "none", "stroke": "#e74c3c", "strokeWidth": 2.5, "strokeLinecap": "round"}}
+          ]
+        },
+        {
+          "type": "panel",
+          "width": 234,
+          "height": 330,
+          "style": {"stroke": "#000", "strokeWidth": 3},
+          "children": [
+            {"type": "rect", "x": 0, "y": 0, "width": 234, "height": 330, "style": {"fill": "#ffe8e8"}},
+            {"type": "path", "d": "M 0 280 Q 50 290 117 275 Q 180 290 234 280 L 234 330 L 0 330 Z", "style": {"fill": "#7cb87c"}},
+            {"id": "alice3", "type": "use", "pattern": "person", "x": 50, "y": 100, "params": {"label": "", "shirtColor": "#e74c3c", "hairColor": "#f1c40f"}},
+            {"id": "bob3", "type": "use", "pattern": "person", "x": 140, "y": 100, "params": {"label": "", "shirtColor": "#3498db", "hairColor": "#2c3e50"}},
+            {"type": "circle", "x": 200, "y": 50, "r": 15, "style": {"fill": "#ff6b8a"}},
+            {"type": "circle", "x": 50, "y": 60, "r": 12, "style": {"fill": "#ff6b8a"}},
+            {"type": "circle", "x": 120, "y": 35, "r": 10, "style": {"fill": "#ff6b8a", "opacity": 0.6}}
+          ]
+        }
+      ]
+    },
+    {"type": "bubble", "x": 60, "y": 15, "text": "What a lovely day!", "target": "alice1", "bubbleStyle": "speech", "style": {"fill": "#fff", "stroke": "#000", "strokeWidth": 2}},
+    {"type": "bubble", "x": 310, "y": 20, "text": "Hey Alice!\nOver here!", "target": "bob1", "bubbleStyle": "speech", "style": {"fill": "#fff", "stroke": "#000", "strokeWidth": 2}},
+    {"type": "bubble", "x": 20, "y": 370, "text": "Bob?!", "target": "alice2", "bubbleStyle": "shout", "style": {"fill": "#ffff88", "stroke": "#000", "strokeWidth": 2, "fontSize": 18}, "fontWeight": "bold"},
+    {"type": "bubble", "x": 310, "y": 380, "text": "Surprise!", "target": "bob2", "bubbleStyle": "speech", "style": {"fill": "#fff", "stroke": "#000", "strokeWidth": 2}},
+    {"type": "bubble", "x": 280, "y": 620, "text": "I made us\na picnic!", "target": "bob3", "bubbleStyle": "thought", "style": {"fill": "#fff", "stroke": "#000", "strokeWidth": 1.5}}
+  ]
+}
