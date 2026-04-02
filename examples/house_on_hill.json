@@ -1,0 +1,75 @@
+{
+  "width": 600,
+  "height": 400,
+  "padding": 0,
+  "background": "#87CEEB",
+  "elements": [
+    {"type": "rect", "x": 0, "y": 0, "width": 600, "height": 250, "style": {"fill": "#87CEEB"}},
+
+    {"type": "circle", "x": 500, "y": 70, "r": 45, "style": {"fill": "#FFD700"}},
+    {"type": "line", "x": 500, "y": 10, "x2": 500, "y2": -5, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}},
+    {"type": "line", "x": 500, "y": 130, "x2": 500, "y2": 145, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}},
+    {"type": "line", "x": 440, "y": 70, "x2": 425, "y2": 70, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}},
+    {"type": "line", "x": 560, "y": 70, "x2": 575, "y2": 70, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}},
+    {"type": "line", "x": 458, "y": 28, "x2": 447, "y2": 17, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}},
+    {"type": "line", "x": 542, "y": 28, "x2": 553, "y2": 17, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}},
+    {"type": "line", "x": 458, "y": 112, "x2": 447, "y2": 123, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}},
+    {"type": "line", "x": 542, "y": 112, "x2": 553, "y2": 123, "style": {"stroke": "#FFD700", "strokeWidth": 3, "strokeLinecap": "round"}},
+
+    {"type": "ellipse", "x": 120, "y": 80, "rx": 40, "ry": 20, "style": {"fill": "#ffffff"}},
+    {"type": "ellipse", "x": 150, "y": 72, "rx": 35, "ry": 22, "style": {"fill": "#ffffff"}},
+    {"type": "ellipse", "x": 90, "y": 75, "rx": 30, "ry": 18, "style": {"fill": "#ffffff"}},
+
+    {"type": "ellipse", "x": 350, "y": 55, "rx": 30, "ry": 15, "style": {"fill": "#fff"}},
+    {"type": "ellipse", "x": 375, "y": 50, "rx": 25, "ry": 17, "style": {"fill": "#fff"}},
+
+    {"type": "path", "d": "M 0 300 Q 150 200 300 240 Q 450 190 600 260 L 600 400 L 0 400 Z", "style": {"fill": "#4CAF50"}},
+
+    {"type": "path", "d": "M 0 340 Q 100 310 200 330 Q 350 290 500 310 Q 550 305 600 320 L 600 400 L 0 400 Z", "style": {"fill": "#388E3C"}},
+
+    {"type": "rect", "x": 220, "y": 195, "width": 100, "height": 80, "style": {"fill": "#E57373", "stroke": "#C62828", "strokeWidth": 2}},
+    {"type": "polygon", "points": [[200, 200], [270, 155], [340, 200]], "style": {"fill": "#D32F2F", "stroke": "#B71C1C", "strokeWidth": 2}},
+
+    {"type": "rect", "x": 255, "y": 240, "width": 25, "height": 35, "style": {"fill": "#795548", "stroke": "#4E342E", "strokeWidth": 1.5}},
+    {"type": "circle", "x": 273, "y": 258, "r": 2, "style": {"fill": "#FFD700"}},
+
+    {"type": "rect", "x": 232, "y": 210, "width": 22, "height": 22, "style": {"fill": "#BBDEFB", "stroke": "#5D4037", "strokeWidth": 1.5}},
+    {"type": "line", "x": 243, "y": 210, "x2": 243, "y2": 232, "style": {"stroke": "#5D4037", "strokeWidth": 1}},
+    {"type": "line", "x": 232, "y": 221, "x2": 254, "y2": 221, "style": {"stroke": "#5D4037", "strokeWidth": 1}},
+
+    {"type": "rect", "x": 290, "y": 210, "width": 22, "height": 22, "style": {"fill": "#BBDEFB", "stroke": "#5D4037", "strokeWidth": 1.5}},
+    {"type": "line", "x": 301, "y": 210, "x2": 301, "y2": 232, "style": {"stroke": "#5D4037", "strokeWidth": 1}},
+    {"type": "line", "x": 290, "y": 221, "x2": 312, "y2": 221, "style": {"stroke": "#5D4037", "strokeWidth": 1}},
+
+    {"type": "rect", "x": 260, "y": 162, "width": 18, "height": 30, "style": {"fill": "#9E9E9E", "stroke": "#616161", "strokeWidth": 1.5}},
+    {"type": "rect", "x": 262, "y": 160, "width": 14, "height": 4, "style": {"fill": "#757575"}},
+
+    {"type": "path", "d": "M 80 310 Q 82 290 85 310", "style": {"fill": "none", "stroke": "#2E7D32", "strokeWidth": 2}},
+    {"type": "path", "d": "M 82 310 Q 78 280 90 295", "style": {"fill": "none", "stroke": "#388E3C", "strokeWidth": 2}},
+    {"type": "path", "d": "M 82 310 Q 88 282 76 298", "style": {"fill": "none", "stroke": "#388E3C", "strokeWidth": 2}},
+
+    {"type": "path", "d": "M 450 270 Q 452 250 455 270", "style": {"fill": "none", "stroke": "#2E7D32", "strokeWidth": 2}},
+    {"type": "path", "d": "M 452 270 Q 448 240 460 255", "style": {"fill": "none", "stroke": "#388E3C", "strokeWidth": 2}},
+    {"type": "path", "d": "M 452 270 Q 458 242 446 258", "style": {"fill": "none", "stroke": "#388E3C", "strokeWidth": 2}},
+
+    {"type": "circle", "x": 130, "y": 320, "r": 5, "style": {"fill": "#FF5722"}},
+    {"type": "circle", "x": 130, "y": 320, "r": 2, "style": {"fill": "#FFC107"}},
+    {"type": "path", "d": "M 130 325 L 130 340", "style": {"fill": "none", "stroke": "#388E3C", "strokeWidth": 2}},
+
+    {"type": "circle", "x": 155, "y": 315, "r": 5, "style": {"fill": "#E91E63"}},
+    {"type": "circle", "x": 155, "y": 315, "r": 2, "style": {"fill": "#FFC107"}},
+    {"type": "path", "d": "M 155 320 L 155 335", "style": {"fill": "none", "stroke": "#388E3C", "strokeWidth": 2}},
+
+    {"type": "circle", "x": 480, "y": 300, "r": 5, "style": {"fill": "#9C27B0"}},
+    {"type": "circle", "x": 480, "y": 300, "r": 2, "style": {"fill": "#FFC107"}},
+    {"type": "path", "d": "M 480 305 L 480 320", "style": {"fill": "none", "stroke": "#388E3C", "strokeWidth": 2}},
+
+    {"type": "path", "d": "M 50 380 Q 55 365 60 380", "style": {"fill": "none", "stroke": "#2E7D32", "strokeWidth": 1.5}},
+    {"type": "path", "d": "M 60 380 Q 65 365 70 380", "style": {"fill": "none", "stroke": "#2E7D32", "strokeWidth": 1.5}},
+    {"type": "path", "d": "M 170 375 Q 175 360 180 375", "style": {"fill": "none", "stroke": "#2E7D32", "strokeWidth": 1.5}},
+    {"type": "path", "d": "M 180 375 Q 185 360 190 375", "style": {"fill": "none", "stroke": "#2E7D32", "strokeWidth": 1.5}},
+    {"type": "path", "d": "M 400 370 Q 405 355 410 370", "style": {"fill": "none", "stroke": "#2E7D32", "strokeWidth": 1.5}},
+    {"type": "path", "d": "M 520 375 Q 525 360 530 375", "style": {"fill": "none", "stroke": "#2E7D32", "strokeWidth": 1.5}},
+    {"type": "path", "d": "M 530 375 Q 535 360 540 375", "style": {"fill": "none", "stroke": "#2E7D32", "strokeWidth": 1.5}}
+  ]
+}
