@@ -1,3 +1,5 @@
 aipencil
 *.png
 *.svg
+!examples/*.png
+!examples/*.json

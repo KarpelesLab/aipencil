@@ -1,0 +1,12 @@
+{
+  "elements": [
+    {
+      "type": "group",
+      "layout": {"type": "stack"},
+      "children": [
+        {"type": "circle", "r": 50, "style": {"fill": "#4a90d9", "stroke": "#2c5f8a", "strokeWidth": 3}},
+        {"type": "text", "text": "Hello\nWorld", "align": "center", "style": {"fill": "#ffffff", "fontSize": 18, "fontWeight": "bold"}}
+      ]
+    }
+  ]
+}

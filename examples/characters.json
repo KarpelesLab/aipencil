@@ -1,0 +1,21 @@
+{
+  "background": "#f5f0eb",
+  "padding": 30,
+  "elements": [
+    {"type": "text", "x": 250, "y": 20, "text": "Character Gallery", "align": "center", "style": {"fontSize": 20, "fontWeight": "bold", "fill": "#444"}},
+    {
+      "type": "group",
+      "x": 20, "y": 50,
+      "layout": {"type": "row", "gap": 35, "align": "bottom"},
+      "children": [
+        {"type": "use", "pattern": "person", "params": {"label": "Alice", "shirtColor": "#e74c3c", "hairColor": "#f1c40f", "skinColor": "#fdd0b0"}},
+        {"type": "use", "pattern": "person", "params": {"label": "Bob", "shirtColor": "#3498db", "hairColor": "#2c3e50", "pantsColor": "#34495e"}},
+        {"type": "use", "pattern": "person", "params": {"label": "Carol", "shirtColor": "#2ecc71", "hairColor": "#8e44ad", "skinColor": "#deb887"}},
+        {"type": "use", "pattern": "face", "params": {"label": "Happy", "expression": "happy", "eyeColor": "#27ae60", "hairColor": "#e67e22"}},
+        {"type": "use", "pattern": "face", "params": {"label": "Sad", "expression": "sad", "eyeColor": "#2980b9"}},
+        {"type": "use", "pattern": "face", "params": {"label": "Surprised", "expression": "surprised", "hairColor": "#c0392b"}},
+        {"type": "use", "pattern": "face", "params": {"label": "Neutral", "expression": "neutral"}}
+      ]
+    }
+  ]
+}

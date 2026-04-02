@@ -1,0 +1,111 @@
+{
+  "background": "#fafafa",
+  "padding": 40,
+  "styles": {
+    "frontend": {"fill": "#e3f2fd", "stroke": "#1565c0", "strokeWidth": 2, "rx": 12},
+    "backend": {"fill": "#fce4ec", "stroke": "#c62828", "strokeWidth": 2, "rx": 12},
+    "data": {"fill": "#fff3e0", "stroke": "#e65100", "strokeWidth": 2, "rx": 12},
+    "external": {"fill": "#e8f5e9", "stroke": "#2e7d32", "strokeWidth": 2, "rx": 12},
+    "title": {"fontSize": 22, "fontWeight": "bold", "fill": "#333"},
+    "subtitle": {"fontSize": 12, "fill": "#888"},
+    "label": {"fontSize": 13}
+  },
+  "elements": [
+    {"type": "text", "x": 380, "y": 25, "text": "E-Commerce Platform Architecture", "align": "center", "class": "title"},
+    {"type": "text", "x": 380, "y": 48, "text": "Production deployment overview", "align": "center", "class": "subtitle"},
+    {
+      "type": "group", "x": 40, "y": 70,
+      "layout": {"type": "row", "gap": 50, "align": "top"},
+      "children": [
+        {
+          "type": "group",
+          "layout": {"type": "column", "gap": 20, "align": "center"},
+          "children": [
+            {"type": "text", "text": "Frontend", "style": {"fontSize": 14, "fontWeight": "bold", "fill": "#1565c0"}},
+            {"id": "web", "type": "group", "layout": {"type": "stack"}, "children": [
+              {"type": "rect", "width": 140, "height": 50, "class": "frontend"},
+              {"type": "text", "text": "Web App\n(React)", "align": "center", "class": "label"}
+            ]},
+            {"id": "mobile", "type": "group", "layout": {"type": "stack"}, "children": [
+              {"type": "rect", "width": 140, "height": 50, "class": "frontend"},
+              {"type": "text", "text": "Mobile App\n(React Native)", "align": "center", "class": "label"}
+            ]}
+          ]
+        },
+        {
+          "type": "group",
+          "layout": {"type": "column", "gap": 20, "align": "center"},
+          "children": [
+            {"type": "text", "text": "Services", "style": {"fontSize": 14, "fontWeight": "bold", "fill": "#c62828"}},
+            {"id": "gateway", "type": "group", "layout": {"type": "stack"}, "children": [
+              {"type": "rect", "width": 140, "height": 50, "class": "backend"},
+              {"type": "text", "text": "API Gateway\n(Kong)", "align": "center", "class": "label"}
+            ]},
+            {
+              "type": "group",
+              "layout": {"type": "row", "gap": 15},
+              "children": [
+                {"id": "auth", "type": "group", "layout": {"type": "stack"}, "children": [
+                  {"type": "rect", "width": 100, "height": 45, "class": "backend"},
+                  {"type": "text", "text": "Auth", "align": "center", "class": "label"}
+                ]},
+                {"id": "catalog", "type": "group", "layout": {"type": "stack"}, "children": [
+                  {"type": "rect", "width": 100, "height": 45, "class": "backend"},
+                  {"type": "text", "text": "Catalog", "align": "center", "class": "label"}
+                ]}
+              ]
+            },
+            {
+              "type": "group",
+              "layout": {"type": "row", "gap": 15},
+              "children": [
+                {"id": "orders", "type": "group", "layout": {"type": "stack"}, "children": [
+                  {"type": "rect", "width": 100, "height": 45, "class": "backend"},
+                  {"type": "text", "text": "Orders", "align": "center", "class": "label"}
+                ]},
+                {"id": "payments", "type": "group", "layout": {"type": "stack"}, "children": [
+                  {"type": "rect", "width": 100, "height": 45, "class": "backend"},
+                  {"type": "text", "text": "Payments", "align": "center", "class": "label"}
+                ]}
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "layout": {"type": "column", "gap": 20, "align": "center"},
+          "children": [
+            {"type": "text", "text": "Data Layer", "style": {"fontSize": 14, "fontWeight": "bold", "fill": "#e65100"}},
+            {"id": "postgres", "type": "group", "layout": {"type": "stack"}, "children": [
+              {"type": "rect", "width": 140, "height": 50, "class": "data"},
+              {"type": "text", "text": "PostgreSQL", "align": "center", "class": "label"}
+            ]},
+            {"id": "redis", "type": "group", "layout": {"type": "stack"}, "children": [
+              {"type": "rect", "width": 140, "height": 50, "class": "data"},
+              {"type": "text", "text": "Redis Cache", "align": "center", "class": "label"}
+            ]},
+            {"id": "s3", "type": "group", "layout": {"type": "stack"}, "children": [
+              {"type": "rect", "width": 140, "height": 50, "class": "data"},
+              {"type": "text", "text": "S3 Storage", "align": "center", "class": "label"}
+            ]}
+          ]
+        }
+      ]
+    },
+    {"id": "stripe", "type": "group", "x": 580, "y": 370, "layout": {"type": "stack"}, "children": [
+      {"type": "rect", "width": 120, "height": 45, "class": "external"},
+      {"type": "text", "text": "Stripe API", "align": "center", "class": "label"}
+    ]},
+    {"type": "arrow", "from": "web", "to": "gateway", "style": {"stroke": "#1565c0", "strokeWidth": 1.5}},
+    {"type": "arrow", "from": "mobile", "to": "gateway", "style": {"stroke": "#1565c0", "strokeWidth": 1.5}},
+    {"type": "arrow", "from": "gateway", "to": "auth", "style": {"stroke": "#c62828", "strokeWidth": 1.5}},
+    {"type": "arrow", "from": "gateway", "to": "catalog", "style": {"stroke": "#c62828", "strokeWidth": 1.5}},
+    {"type": "arrow", "from": "gateway", "to": "orders", "style": {"stroke": "#c62828", "strokeWidth": 1.5}},
+    {"type": "arrow", "from": "orders", "to": "payments", "style": {"stroke": "#c62828", "strokeWidth": 1.5}},
+    {"type": "arrow", "from": "auth", "to": "redis", "style": {"stroke": "#e65100", "strokeWidth": 1.5}},
+    {"type": "arrow", "from": "catalog", "to": "postgres", "style": {"stroke": "#e65100", "strokeWidth": 1.5}},
+    {"type": "arrow", "from": "orders", "to": "postgres", "style": {"stroke": "#e65100", "strokeWidth": 1.5}},
+    {"type": "arrow", "from": "catalog", "to": "s3", "style": {"stroke": "#e65100", "strokeWidth": 1.5}},
+    {"type": "arrow", "from": "payments", "to": "stripe", "style": {"stroke": "#2e7d32", "strokeWidth": 1.5}}
+  ]
+}

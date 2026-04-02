@@ -23,6 +23,7 @@ func main() {
 		listPatterns = flag.Bool("list-patterns", false, "List available built-in patterns")
 		mcpMode      = flag.Bool("mcp", false, "Run as MCP server (stdio transport)")
 	)
+
 	flag.Parse()
 
 	if *mcpMode {
