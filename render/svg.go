@@ -285,11 +285,20 @@ func renderText(sb *strings.Builder, el *scene.Element, s *scene.Scene, indent s
 		sb.WriteString(escText(el.Text))
 		sb.WriteString("</text>\n")
 	} else {
+		// Shift y up so the text block is vertically centered.
+		// Total block height = (n-1) * lineSpacing. First line is at y,
+		// last line at y + (n-1)*lineSpacing. Center of block is at
+		// y + (n-1)*lineSpacing/2. We want that center at the original y,
+		// so offset = -(n-1)*lineSpacing/2.
+		lineSpacing := fontSize * 1.4
+		offsetY := -float64(len(lines)-1) * lineSpacing / 2
+		fmt.Fprintf(sb, ` dy="%s"`, ff(offsetY))
+
 		sb.WriteString(">\n")
 		for i, line := range lines {
 			dy := "0"
 			if i > 0 {
-				dy = ff(fontSize * 1.4)
+				dy = ff(lineSpacing)
 			}
 			fmt.Fprintf(sb, `%s  <tspan x="%s" dy="%s">%s</tspan>`+"\n", indent, ff(x), dy, escText(line))
 		}
