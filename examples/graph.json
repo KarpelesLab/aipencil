@@ -10,27 +10,27 @@
       "layout": {"type": "graph"},
       "children": [
         {"id": "A", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 80, "height": 40, "class": "node"},
+          {"type": "rect", "class": "node"},
           {"type": "text", "text": "Auth", "align": "center"}
         ]},
         {"id": "B", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 80, "height": 40, "class": "node"},
+          {"type": "rect", "class": "node"},
           {"type": "text", "text": "Users", "align": "center"}
         ]},
         {"id": "C", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 80, "height": 40, "class": "node"},
+          {"type": "rect", "class": "node"},
           {"type": "text", "text": "Posts", "align": "center"}
         ]},
         {"id": "D", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 80, "height": 40, "class": "node"},
+          {"type": "rect", "class": "node"},
           {"type": "text", "text": "Comments", "align": "center"}
         ]},
         {"id": "E", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 80, "height": 40, "class": "node"},
+          {"type": "rect", "class": "node"},
           {"type": "text", "text": "Media", "align": "center"}
         ]},
         {"id": "F", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 80, "height": 40, "class": "node"},
+          {"type": "rect", "class": "node"},
           {"type": "text", "text": "Storage", "align": "center"}
         ]},
         {"type": "arrow", "from": "A", "to": "B", "label": "validates"},

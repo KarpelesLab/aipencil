@@ -47,12 +47,8 @@ func applyDefaults(s *Scene) {
 func applyElementDefaults(el *Element) {
 	switch el.Type {
 	case "rect":
-		if el.Width == nil {
-			el.Width = Ptr(100)
-		}
-		if el.Height == nil {
-			el.Height = Ptr(60)
-		}
+		// Don't force default sizes — let layout auto-size from context.
+		// Only set defaults for standalone rects (no parent stack/group).
 	case "circle":
 		if el.R == nil {
 			el.R = Ptr(25)

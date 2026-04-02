@@ -10,51 +10,51 @@
   "elements": [
     {
       "type": "group",
-      "layout": {"type": "ranked", "gap": 70},
+      "layout": {"type": "ranked", "gap": 60},
       "children": [
         {"id": "web", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 120, "height": 45, "class": "frontend"},
-          {"type": "text", "text": "Web App", "align": "center", "style": {"fontSize": 13}}
+          {"type": "rect", "class": "frontend"},
+          {"type": "text", "text": "Web App", "align": "center"}
         ]},
         {"id": "mobile", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 120, "height": 45, "class": "frontend"},
-          {"type": "text", "text": "Mobile App", "align": "center", "style": {"fontSize": 13}}
+          {"type": "rect", "class": "frontend"},
+          {"type": "text", "text": "Mobile App", "align": "center"}
         ]},
         {"id": "gateway", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 120, "height": 45, "class": "backend"},
-          {"type": "text", "text": "API Gateway", "align": "center", "style": {"fontSize": 13}}
+          {"type": "rect", "class": "backend"},
+          {"type": "text", "text": "API Gateway", "align": "center"}
         ]},
         {"id": "auth", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 100, "height": 40, "class": "backend"},
-          {"type": "text", "text": "Auth", "align": "center", "style": {"fontSize": 13}}
+          {"type": "rect", "class": "backend"},
+          {"type": "text", "text": "Auth", "align": "center"}
         ]},
         {"id": "catalog", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 100, "height": 40, "class": "backend"},
-          {"type": "text", "text": "Catalog", "align": "center", "style": {"fontSize": 13}}
+          {"type": "rect", "class": "backend"},
+          {"type": "text", "text": "Catalog", "align": "center"}
         ]},
         {"id": "orders", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 100, "height": 40, "class": "backend"},
-          {"type": "text", "text": "Orders", "align": "center", "style": {"fontSize": 13}}
+          {"type": "rect", "class": "backend"},
+          {"type": "text", "text": "Orders", "align": "center"}
         ]},
         {"id": "payments", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 100, "height": 40, "class": "backend"},
-          {"type": "text", "text": "Payments", "align": "center", "style": {"fontSize": 13}}
+          {"type": "rect", "class": "backend"},
+          {"type": "text", "text": "Payments", "align": "center"}
         ]},
         {"id": "postgres", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 110, "height": 40, "class": "data"},
-          {"type": "text", "text": "PostgreSQL", "align": "center", "style": {"fontSize": 13}}
+          {"type": "rect", "class": "data"},
+          {"type": "text", "text": "PostgreSQL", "align": "center"}
         ]},
         {"id": "redis", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 110, "height": 40, "class": "data"},
-          {"type": "text", "text": "Redis", "align": "center", "style": {"fontSize": 13}}
+          {"type": "rect", "class": "data"},
+          {"type": "text", "text": "Redis", "align": "center"}
         ]},
         {"id": "s3", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 110, "height": 40, "class": "data"},
-          {"type": "text", "text": "S3", "align": "center", "style": {"fontSize": 13}}
+          {"type": "rect", "class": "data"},
+          {"type": "text", "text": "S3", "align": "center"}
         ]},
         {"id": "stripe", "type": "group", "layout": {"type": "stack"}, "children": [
-          {"type": "rect", "width": 110, "height": 40, "class": "external"},
-          {"type": "text", "text": "Stripe", "align": "center", "style": {"fontSize": 13}}
+          {"type": "rect", "class": "external"},
+          {"type": "text", "text": "Stripe", "align": "center"}
         ]},
         {"type": "arrow", "from": "web", "to": "gateway"},
         {"type": "arrow", "from": "mobile", "to": "gateway"},

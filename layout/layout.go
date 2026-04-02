@@ -64,8 +64,14 @@ func measure(el *scene.Element, s *scene.Scene) {
 
 	switch el.Type {
 	case "rect":
-		el.ComputedWidth = valOr(el.Width, 100)
-		el.ComputedHeight = valOr(el.Height, 60)
+		// If width/height specified, use them. Otherwise leave at 0 —
+		// a parent stack/group will expand this rect to fill.
+		if el.Width != nil {
+			el.ComputedWidth = *el.Width
+		}
+		if el.Height != nil {
+			el.ComputedHeight = *el.Height
+		}
 
 	case "circle":
 		r := valOr(el.R, 25)
@@ -351,8 +357,51 @@ func layoutGrid(el *scene.Element, s *scene.Scene) {
 }
 
 func layoutStack(el *scene.Element) {
-	var maxW, maxH float64
+	// First pass: find the natural content size from children that have a size.
+	// Text elements provide content size; shapes with explicit size contribute.
+	// Shapes with zero size (auto-sizing rects) are excluded from this pass.
+	var contentW, contentH float64
+	padding := 16.0 // default padding for auto-sized containers
+
 	for _, child := range el.Children {
+		w, h := child.ComputedWidth, child.ComputedHeight
+		if w == 0 && h == 0 {
+			continue // skip zero-size elements (they'll expand later)
+		}
+		if w > contentW {
+			contentW = w
+		}
+		if h > contentH {
+			contentH = h
+		}
+	}
+
+	// If content comes from text, add padding for the container
+	hasAutoSizeShapes := false
+	hasContent := false
+	for _, child := range el.Children {
+		if child.ComputedWidth == 0 && child.ComputedHeight == 0 && child.Width == nil && child.Height == nil {
+			hasAutoSizeShapes = true
+		}
+		if child.ComputedWidth > 0 || child.ComputedHeight > 0 {
+			hasContent = true
+		}
+	}
+
+	if hasAutoSizeShapes && hasContent {
+		contentW += padding * 2
+		contentH += padding * 2
+	}
+
+	// Second pass: expand zero-size children to fill the content area
+	maxW, maxH := contentW, contentH
+	for _, child := range el.Children {
+		if child.ComputedWidth == 0 && child.Width == nil {
+			child.ComputedWidth = maxW
+		}
+		if child.ComputedHeight == 0 && child.Height == nil {
+			child.ComputedHeight = maxH
+		}
 		if child.ComputedWidth > maxW {
 			maxW = child.ComputedWidth
 		}
