@@ -1,0 +1,31 @@
+{
+  "params": {
+    "skinColor": {"type": "color", "default": "#fdd0b0"},
+    "hairColor": {"type": "color", "default": "#4a3728"},
+    "eyeColor": {"type": "color", "default": "#3366aa"},
+    "expression": {"type": "string", "default": "neutral", "enum": ["neutral", "happy", "sad", "surprised"]},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 60,
+  "height": 80,
+  "elements": [
+    {"type": "ellipse", "x": 30, "y": 32, "rx": 26, "ry": 30, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1.5}},
+
+    {"type": "ellipse", "x": 30, "y": 14, "rx": 28, "ry": 16, "style": {"fill": "{{hairColor}}"}, "if": "hairStyle != 'none'"},
+
+    {"type": "ellipse", "x": 18, "y": 30, "rx": 4, "ry": 5, "style": {"fill": "#fff", "stroke": "#555", "strokeWidth": 0.8}},
+    {"type": "circle", "x": 18, "y": 30, "r": 2.5, "style": {"fill": "{{eyeColor}}"}},
+
+    {"type": "ellipse", "x": 42, "y": 30, "rx": 4, "ry": 5, "style": {"fill": "#fff", "stroke": "#555", "strokeWidth": 0.8}},
+    {"type": "circle", "x": 42, "y": 30, "r": 2.5, "style": {"fill": "{{eyeColor}}"}},
+
+    {"type": "ellipse", "x": 30, "y": 40, "rx": 2, "ry": 1.5, "style": {"fill": "#d4a076"}},
+
+    {"type": "path", "d": "M 22 48 Q 30 54 38 48", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "expression == 'happy'"},
+    {"type": "path", "d": "M 22 48 L 38 48", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "expression == 'neutral'"},
+    {"type": "path", "d": "M 22 52 Q 30 46 38 52", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "expression == 'sad'"},
+    {"type": "ellipse", "x": 30, "y": 50, "rx": 5, "ry": 6, "style": {"fill": "#555"}, "if": "expression == 'surprised'"},
+
+    {"type": "text", "x": 30, "y": 75, "text": "{{label}}", "align": "center", "style": {"fontSize": 10, "fill": "#333"}, "if": "label"}
+  ]
+}

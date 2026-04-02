@@ -1,0 +1,22 @@
+{
+  "params": {
+    "label": {"type": "string", "default": "Label"},
+    "color": {"type": "color", "default": "#e8e8ff"},
+    "textColor": {"type": "color", "default": "#333"},
+    "borderColor": {"type": "color", "default": "#555"},
+    "width": {"type": "number", "default": 120},
+    "height": {"type": "number", "default": 50}
+  },
+  "width": 120,
+  "height": 50,
+  "elements": [
+    {
+      "type": "group",
+      "layout": {"type": "stack"},
+      "children": [
+        {"type": "rect", "width": 120, "height": 50, "style": {"fill": "{{color}}", "stroke": "{{borderColor}}", "strokeWidth": 2, "rx": 8}},
+        {"type": "text", "text": "{{label}}", "align": "center", "style": {"fontSize": 14, "fill": "{{textColor}}"}}
+      ]
+    }
+  ]
+}
