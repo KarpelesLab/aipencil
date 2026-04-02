@@ -1,8 +1,6 @@
 {
-  "width": 760,
-  "height": 460,
-  "padding": 0,
   "background": "#fafafa",
+  "padding": 30,
   "styles": {
     "frontend": {"fill": "#e3f2fd", "stroke": "#1565c0", "strokeWidth": 2, "rx": 12},
     "backend": {"fill": "#fce4ec", "stroke": "#c62828", "strokeWidth": 2, "rx": 12},
@@ -10,24 +8,19 @@
     "external": {"fill": "#e8f5e9", "stroke": "#2e7d32", "strokeWidth": 2, "rx": 12}
   },
   "elements": [
-    {"type": "text", "text": "E-Commerce Platform Architecture", "align": "center",
-     "style": {"fontSize": 22, "fontWeight": "bold", "fill": "#333"},
-     "position": {"x": "50%", "anchor": "top-center", "offsetY": 20}},
-    {"type": "text", "text": "Production deployment overview", "align": "center",
-     "style": {"fontSize": 12, "fill": "#888"},
-     "position": {"x": "50%", "anchor": "top-center", "offsetY": 45}},
-
-    {"type": "text", "text": "Frontend", "style": {"fontSize": 14, "fontWeight": "bold", "fill": "#1565c0"},
-     "position": {"x": "12%", "anchor": "top-center", "offsetY": 75}},
-    {"type": "text", "text": "Services", "style": {"fontSize": 14, "fontWeight": "bold", "fill": "#c62828"},
-     "position": {"x": "42%", "anchor": "top-center", "offsetY": 75}},
-    {"type": "text", "text": "Data Layer", "style": {"fontSize": 14, "fontWeight": "bold", "fill": "#e65100"},
-     "position": {"x": "75%", "anchor": "top-center", "offsetY": 75}},
-
     {
       "type": "group",
-      "position": {"x": "5%", "y": "100"},
-      "layout": {"type": "column", "gap": 15, "align": "center"},
+      "layout": {"type": "column", "gap": 20, "align": "center"},
+      "children": [
+        {"type": "text", "text": "E-Commerce Platform Architecture",
+         "align": "center", "style": {"fontSize": 22, "fontWeight": "bold", "fill": "#333"}},
+        {"type": "text", "text": "Production deployment overview",
+         "align": "center", "style": {"fontSize": 12, "fill": "#888"}}
+      ]
+    },
+    {
+      "type": "group",
+      "layout": {"type": "ranked", "gap": 55, "align": "LR"},
       "children": [
         {"id": "web", "type": "group", "layout": {"type": "stack"}, "children": [
           {"type": "rect", "class": "frontend"},
@@ -36,55 +29,27 @@
         {"id": "mobile", "type": "group", "layout": {"type": "stack"}, "children": [
           {"type": "rect", "class": "frontend"},
           {"type": "text", "text": "Mobile App\n(React Native)", "align": "center", "style": {"fontSize": 13}}
-        ]}
-      ]
-    },
-
-    {
-      "type": "group",
-      "position": {"x": "27%", "y": "100"},
-      "layout": {"type": "column", "gap": 15, "align": "center"},
-      "children": [
+        ]},
         {"id": "gateway", "type": "group", "layout": {"type": "stack"}, "children": [
           {"type": "rect", "class": "backend"},
           {"type": "text", "text": "API Gateway\n(Kong)", "align": "center", "style": {"fontSize": 13}}
         ]},
-        {
-          "type": "group",
-          "layout": {"type": "row", "gap": 15},
-          "children": [
-            {"id": "auth", "type": "group", "layout": {"type": "stack"}, "children": [
-              {"type": "rect", "class": "backend"},
-              {"type": "text", "text": "Auth", "align": "center", "style": {"fontSize": 13}}
-            ]},
-            {"id": "catalog", "type": "group", "layout": {"type": "stack"}, "children": [
-              {"type": "rect", "class": "backend"},
-              {"type": "text", "text": "Catalog", "align": "center", "style": {"fontSize": 13}}
-            ]}
-          ]
-        },
-        {
-          "type": "group",
-          "layout": {"type": "row", "gap": 15},
-          "children": [
-            {"id": "orders", "type": "group", "layout": {"type": "stack"}, "children": [
-              {"type": "rect", "class": "backend"},
-              {"type": "text", "text": "Orders", "align": "center", "style": {"fontSize": 13}}
-            ]},
-            {"id": "payments", "type": "group", "layout": {"type": "stack"}, "children": [
-              {"type": "rect", "class": "backend"},
-              {"type": "text", "text": "Payments", "align": "center", "style": {"fontSize": 13}}
-            ]}
-          ]
-        }
-      ]
-    },
-
-    {
-      "type": "group",
-      "position": {"x": "63%", "y": "100"},
-      "layout": {"type": "column", "gap": 15, "align": "center"},
-      "children": [
+        {"id": "auth", "type": "group", "layout": {"type": "stack"}, "children": [
+          {"type": "rect", "class": "backend"},
+          {"type": "text", "text": "Auth", "align": "center", "style": {"fontSize": 13}}
+        ]},
+        {"id": "catalog", "type": "group", "layout": {"type": "stack"}, "children": [
+          {"type": "rect", "class": "backend"},
+          {"type": "text", "text": "Catalog", "align": "center", "style": {"fontSize": 13}}
+        ]},
+        {"id": "orders", "type": "group", "layout": {"type": "stack"}, "children": [
+          {"type": "rect", "class": "backend"},
+          {"type": "text", "text": "Orders", "align": "center", "style": {"fontSize": 13}}
+        ]},
+        {"id": "payments", "type": "group", "layout": {"type": "stack"}, "children": [
+          {"type": "rect", "class": "backend"},
+          {"type": "text", "text": "Payments", "align": "center", "style": {"fontSize": 13}}
+        ]},
         {"id": "postgres", "type": "group", "layout": {"type": "stack"}, "children": [
           {"type": "rect", "class": "data"},
           {"type": "text", "text": "PostgreSQL", "align": "center", "style": {"fontSize": 13}}
@@ -96,27 +61,23 @@
         {"id": "s3", "type": "group", "layout": {"type": "stack"}, "children": [
           {"type": "rect", "class": "data"},
           {"type": "text", "text": "S3 Storage", "align": "center", "style": {"fontSize": 13}}
-        ]}
+        ]},
+        {"id": "stripe", "type": "group", "layout": {"type": "stack"}, "children": [
+          {"type": "rect", "class": "external"},
+          {"type": "text", "text": "Stripe API", "align": "center", "style": {"fontSize": 13}}
+        ]},
+        {"type": "arrow", "from": "web", "to": "gateway", "style": {"stroke": "#1565c0", "strokeWidth": 1.5}},
+        {"type": "arrow", "from": "mobile", "to": "gateway", "style": {"stroke": "#1565c0", "strokeWidth": 1.5}},
+        {"type": "arrow", "from": "gateway", "to": "auth", "style": {"stroke": "#c62828", "strokeWidth": 1.5}},
+        {"type": "arrow", "from": "gateway", "to": "catalog", "style": {"stroke": "#c62828", "strokeWidth": 1.5}},
+        {"type": "arrow", "from": "gateway", "to": "orders", "style": {"stroke": "#c62828", "strokeWidth": 1.5}},
+        {"type": "arrow", "from": "orders", "to": "payments", "style": {"stroke": "#c62828", "strokeWidth": 1.5}},
+        {"type": "arrow", "from": "auth", "to": "redis", "style": {"stroke": "#e65100", "strokeWidth": 1.5}},
+        {"type": "arrow", "from": "catalog", "to": "postgres", "style": {"stroke": "#e65100", "strokeWidth": 1.5}},
+        {"type": "arrow", "from": "orders", "to": "postgres", "style": {"stroke": "#e65100", "strokeWidth": 1.5}},
+        {"type": "arrow", "from": "catalog", "to": "s3", "style": {"stroke": "#e65100", "strokeWidth": 1.5}},
+        {"type": "arrow", "from": "payments", "to": "stripe", "style": {"stroke": "#2e7d32", "strokeWidth": 1.5}}
       ]
-    },
-
-    {"id": "stripe", "type": "group", "layout": {"type": "stack"},
-     "position": {"x": "75%", "y": "370"},
-     "children": [
-       {"type": "rect", "class": "external"},
-       {"type": "text", "text": "Stripe API", "align": "center", "style": {"fontSize": 13}}
-     ]},
-
-    {"type": "arrow", "from": "web", "to": "gateway", "style": {"stroke": "#1565c0", "strokeWidth": 1.5}},
-    {"type": "arrow", "from": "mobile", "to": "gateway", "style": {"stroke": "#1565c0", "strokeWidth": 1.5}},
-    {"type": "arrow", "from": "gateway", "to": "auth", "style": {"stroke": "#c62828", "strokeWidth": 1.5}},
-    {"type": "arrow", "from": "gateway", "to": "catalog", "style": {"stroke": "#c62828", "strokeWidth": 1.5}},
-    {"type": "arrow", "from": "gateway", "to": "orders", "style": {"stroke": "#c62828", "strokeWidth": 1.5}},
-    {"type": "arrow", "from": "orders", "to": "payments", "style": {"stroke": "#c62828", "strokeWidth": 1.5}},
-    {"type": "arrow", "from": "auth", "to": "redis", "style": {"stroke": "#e65100", "strokeWidth": 1.5}},
-    {"type": "arrow", "from": "catalog", "to": "postgres", "style": {"stroke": "#e65100", "strokeWidth": 1.5}},
-    {"type": "arrow", "from": "orders", "to": "postgres", "style": {"stroke": "#e65100", "strokeWidth": 1.5}},
-    {"type": "arrow", "from": "catalog", "to": "s3", "style": {"stroke": "#e65100", "strokeWidth": 1.5}},
-    {"type": "arrow", "from": "payments", "to": "stripe", "style": {"stroke": "#2e7d32", "strokeWidth": 1.5}}
+    }
   ]
 }
