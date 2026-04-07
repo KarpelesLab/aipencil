@@ -1,0 +1,21 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#2196F3"},
+    "bellyColor": {"type": "color", "default": "#BBDEFB"},
+    "beakColor": {"type": "color", "default": "#FF9800"}
+  },
+  "width": 50,
+  "height": 40,
+  "elements": [
+    {"type": "ellipse", "x": 28, "y": 22, "rx": 18, "ry": 14, "style": {"fill": "{{color}}"}},
+    {"type": "ellipse", "x": 28, "y": 26, "rx": 12, "ry": 10, "style": {"fill": "{{bellyColor}}"}},
+    {"type": "circle", "x": 14, "y": 14, "r": 10, "style": {"fill": "{{color}}"}},
+    {"type": "circle", "x": 10, "y": 12, "r": 2, "style": {"fill": "#fff"}},
+    {"type": "circle", "x": 10, "y": 12, "r": 1, "style": {"fill": "#333"}},
+    {"type": "polygon", "points": [[4, 16], [0, 14], [4, 12]], "style": {"fill": "{{beakColor}}"}},
+    {"type": "path", "d": "M 20 10 Q 30 0 40 8", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 3, "strokeLinecap": "round"}},
+    {"type": "path", "d": "M 46 25 L 50 30 L 46 35", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 2}},
+    {"type": "line", "x": 22, "y": 36, "x2": 22, "y2": 40, "style": {"stroke": "#666", "strokeWidth": 1.5}},
+    {"type": "line", "x": 30, "y": 36, "x2": 30, "y2": 40, "style": {"stroke": "#666", "strokeWidth": 1.5}}
+  ]
+}

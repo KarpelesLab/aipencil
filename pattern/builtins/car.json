@@ -1,0 +1,20 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#F44336"},
+    "windowColor": {"type": "color", "default": "#BBDEFB"}
+  },
+  "width": 80,
+  "height": 40,
+  "elements": [
+    {"type": "rect", "x": 5, "y": 15, "width": 70, "height": 22, "style": {"fill": "{{color}}", "rx": 5}},
+    {"type": "path", "d": "M 18 15 L 25 3 L 55 3 L 62 15", "style": {"fill": "{{color}}", "stroke": "{{color}}", "strokeWidth": 1}},
+    {"type": "rect", "x": 27, "y": 5, "width": 12, "height": 10, "style": {"fill": "{{windowColor}}", "rx": 1}},
+    {"type": "rect", "x": 41, "y": 5, "width": 12, "height": 10, "style": {"fill": "{{windowColor}}", "rx": 1}},
+    {"type": "circle", "x": 22, "y": 37, "r": 6, "style": {"fill": "#333"}},
+    {"type": "circle", "x": 22, "y": 37, "r": 3, "style": {"fill": "#888"}},
+    {"type": "circle", "x": 58, "y": 37, "r": 6, "style": {"fill": "#333"}},
+    {"type": "circle", "x": 58, "y": 37, "r": 3, "style": {"fill": "#888"}},
+    {"type": "rect", "x": 70, "y": 19, "width": 6, "height": 4, "style": {"fill": "#FFC107", "rx": 1}},
+    {"type": "rect", "x": 4, "y": 19, "width": 6, "height": 4, "style": {"fill": "#FF5722", "rx": 1}}
+  ]
+}

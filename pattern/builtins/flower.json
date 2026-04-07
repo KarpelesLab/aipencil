@@ -1,0 +1,19 @@
+{
+  "params": {
+    "petalColor": {"type": "color", "default": "#FF5722"},
+    "centerColor": {"type": "color", "default": "#FFC107"},
+    "stemColor": {"type": "color", "default": "#388E3C"}
+  },
+  "width": 24,
+  "height": 40,
+  "elements": [
+    {"type": "path", "d": "M 12 18 L 12 40", "style": {"fill": "none", "stroke": "{{stemColor}}", "strokeWidth": 2}},
+    {"type": "path", "d": "M 12 30 Q 20 25 22 20", "style": {"fill": "none", "stroke": "{{stemColor}}", "strokeWidth": 1.5}},
+    {"type": "circle", "x": 12, "y": 10, "r": 8, "style": {"fill": "{{petalColor}}"}},
+    {"type": "circle", "x": 6, "y": 6, "r": 5, "style": {"fill": "{{petalColor}}"}},
+    {"type": "circle", "x": 18, "y": 6, "r": 5, "style": {"fill": "{{petalColor}}"}},
+    {"type": "circle", "x": 6, "y": 14, "r": 5, "style": {"fill": "{{petalColor}}"}},
+    {"type": "circle", "x": 18, "y": 14, "r": 5, "style": {"fill": "{{petalColor}}"}},
+    {"type": "circle", "x": 12, "y": 10, "r": 4, "style": {"fill": "{{centerColor}}"}}
+  ]
+}

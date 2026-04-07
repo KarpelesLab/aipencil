@@ -1,0 +1,16 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#FF7043"},
+    "finColor": {"type": "color", "default": "#FF5722"}
+  },
+  "width": 60,
+  "height": 30,
+  "elements": [
+    {"type": "ellipse", "x": 28, "y": 15, "rx": 22, "ry": 12, "style": {"fill": "{{color}}"}},
+    {"type": "polygon", "points": [[48, 15], [60, 5], [60, 25]], "style": {"fill": "{{finColor}}"}},
+    {"type": "path", "d": "M 28 3 Q 35 8 28 10", "style": {"fill": "{{finColor}}"}},
+    {"type": "circle", "x": 14, "y": 13, "r": 3, "style": {"fill": "#fff"}},
+    {"type": "circle", "x": 13, "y": 13, "r": 1.5, "style": {"fill": "#333"}},
+    {"type": "path", "d": "M 8 18 Q 5 20 8 22", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1}}
+  ]
+}

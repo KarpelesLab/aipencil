@@ -1,0 +1,12 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#FFF9C4"},
+    "phase": {"type": "string", "default": "crescent", "enum": ["crescent", "full"]}
+  },
+  "width": 50,
+  "height": 50,
+  "elements": [
+    {"type": "circle", "x": 25, "y": 25, "r": 22, "style": {"fill": "{{color}}"}},
+    {"type": "circle", "x": 35, "y": 20, "r": 18, "style": {"fill": "#1a1a3e"}, "if": "phase == 'crescent'"}
+  ]
+}

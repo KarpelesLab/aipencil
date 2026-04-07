@@ -1,0 +1,13 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#FFD700"},
+    "points": {"type": "number", "default": 5}
+  },
+  "width": 50,
+  "height": 50,
+  "elements": [
+    {"type": "polygon", "points": [
+      [25, 0], [31, 18], [50, 18], [35, 30], [40, 50], [25, 38], [10, 50], [15, 30], [0, 18], [19, 18]
+    ], "style": {"fill": "{{color}}", "stroke": "none"}}
+  ]
+}

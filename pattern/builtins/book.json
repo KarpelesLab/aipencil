@@ -1,0 +1,19 @@
+{
+  "params": {
+    "coverColor": {"type": "color", "default": "#1565C0"},
+    "pageColor": {"type": "color", "default": "#FFF9C4"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 45,
+  "height": 55,
+  "elements": [
+    {"type": "rect", "x": 0, "y": 0, "width": 40, "height": 55, "style": {"fill": "{{coverColor}}", "rx": 2}},
+    {"type": "rect", "x": 6, "y": 3, "width": 34, "height": 49, "style": {"fill": "{{pageColor}}", "rx": 1}},
+    {"type": "rect", "x": 3, "y": 0, "width": 4, "height": 55, "style": {"fill": "{{coverColor}}"}},
+    {"type": "line", "x": 10, "y": 15, "x2": 36, "y2": 15, "style": {"stroke": "#ccc", "strokeWidth": 0.8}},
+    {"type": "line", "x": 10, "y": 21, "x2": 36, "y2": 21, "style": {"stroke": "#ccc", "strokeWidth": 0.8}},
+    {"type": "line", "x": 10, "y": 27, "x2": 36, "y2": 27, "style": {"stroke": "#ccc", "strokeWidth": 0.8}},
+    {"type": "line", "x": 10, "y": 33, "x2": 30, "y2": 33, "style": {"stroke": "#ccc", "strokeWidth": 0.8}},
+    {"type": "text", "x": 23, "y": 10, "text": "{{label}}", "align": "center", "style": {"fontSize": 7, "fill": "#333"}, "if": "label"}
+  ]
+}

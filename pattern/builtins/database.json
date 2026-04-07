@@ -1,0 +1,15 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#FFF3E0"},
+    "strokeColor": {"type": "color", "default": "#E65100"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 60,
+  "height": 70,
+  "elements": [
+    {"type": "path", "d": "M 0 15 L 0 55 Q 0 65 30 65 Q 60 65 60 55 L 60 15", "style": {"fill": "{{color}}", "stroke": "{{strokeColor}}", "strokeWidth": 2}},
+    {"type": "ellipse", "x": 30, "y": 15, "rx": 30, "ry": 12, "style": {"fill": "{{color}}", "stroke": "{{strokeColor}}", "strokeWidth": 2}},
+    {"type": "path", "d": "M 0 30 Q 30 42 60 30", "style": {"fill": "none", "stroke": "{{strokeColor}}", "strokeWidth": 1, "opacity": 0.5}},
+    {"type": "text", "x": 30, "y": 45, "text": "{{label}}", "align": "center", "style": {"fontSize": 10, "fill": "#333"}, "if": "label"}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#78909C"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 40,
+  "height": 50,
+  "elements": [
+    {"type": "circle", "x": 20, "y": 14, "r": 12, "style": {"fill": "{{color}}"}},
+    {"type": "path", "d": "M 0 45 Q 0 30 20 28 Q 40 30 40 45 Z", "style": {"fill": "{{color}}"}},
+    {"type": "text", "x": 20, "y": 50, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

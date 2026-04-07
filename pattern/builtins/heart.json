@@ -1,0 +1,10 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#E91E63"}
+  },
+  "width": 50,
+  "height": 45,
+  "elements": [
+    {"type": "path", "d": "M 25 42 Q 0 25 5 12 Q 10 0 25 10 Q 40 0 45 12 Q 50 25 25 42 Z", "style": {"fill": "{{color}}"}}
+  ]
+}

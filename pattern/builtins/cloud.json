@@ -1,0 +1,12 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#ffffff"}
+  },
+  "width": 100,
+  "height": 50,
+  "elements": [
+    {"type": "ellipse", "x": 50, "y": 30, "rx": 40, "ry": 20, "style": {"fill": "{{color}}"}},
+    {"type": "ellipse", "x": 70, "y": 22, "rx": 35, "ry": 22, "style": {"fill": "{{color}}"}},
+    {"type": "ellipse", "x": 30, "y": 25, "rx": 30, "ry": 18, "style": {"fill": "{{color}}"}}
+  ]
+}

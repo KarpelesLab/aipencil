@@ -1,0 +1,12 @@
+{
+  "params": {
+    "leafColor": {"type": "color", "default": "#4CAF50"},
+    "trunkColor": {"type": "color", "default": "#795548"}
+  },
+  "width": 60,
+  "height": 100,
+  "elements": [
+    {"type": "rect", "x": 23, "y": 55, "width": 14, "height": 45, "style": {"fill": "{{trunkColor}}"}},
+    {"type": "polygon", "points": [[30, 0], [60, 40], [48, 40], [60, 60], [0, 60], [12, 40], [0, 40]], "style": {"fill": "{{leafColor}}"}}
+  ]
+}

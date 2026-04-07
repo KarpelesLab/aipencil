@@ -1,0 +1,23 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#A0522D"},
+    "spotColor": {"type": "color", "default": "#D2B48C"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 60,
+  "height": 60,
+  "elements": [
+    {"type": "ellipse", "x": 30, "y": 38, "rx": 22, "ry": 18, "style": {"fill": "{{color}}"}},
+    {"type": "circle", "x": 30, "y": 18, "r": 16, "style": {"fill": "{{color}}"}},
+    {"type": "ellipse", "x": 10, "y": 12, "rx": 8, "ry": 12, "style": {"fill": "{{spotColor}}"}},
+    {"type": "ellipse", "x": 50, "y": 12, "rx": 8, "ry": 12, "style": {"fill": "{{spotColor}}"}},
+    {"type": "circle", "x": 23, "y": 16, "r": 3, "style": {"fill": "#fff"}},
+    {"type": "circle", "x": 23, "y": 16, "r": 1.5, "style": {"fill": "#333"}},
+    {"type": "circle", "x": 37, "y": 16, "r": 3, "style": {"fill": "#fff"}},
+    {"type": "circle", "x": 37, "y": 16, "r": 1.5, "style": {"fill": "#333"}},
+    {"type": "ellipse", "x": 30, "y": 24, "rx": 4, "ry": 3, "style": {"fill": "#333"}},
+    {"type": "path", "d": "M 26 28 Q 30 32 34 28", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.2}},
+    {"type": "path", "d": "M 50 42 Q 60 38 58 48", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 4, "strokeLinecap": "round"}},
+    {"type": "text", "x": 30, "y": 60, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}
