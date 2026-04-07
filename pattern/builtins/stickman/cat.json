@@ -1,0 +1,22 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#333"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 40,
+  "height": 40,
+  "elements": [
+    {"type": "circle", "x": 20, "y": 14, "r": 10, "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 2}},
+    {"type": "path", "d": "M 12 6 L 8 0 L 14 4", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 2, "strokeLinejoin": "round"}},
+    {"type": "path", "d": "M 28 6 L 32 0 L 26 4", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 2, "strokeLinejoin": "round"}},
+    {"type": "circle", "x": 15, "y": 12, "r": 1.5, "style": {"fill": "{{color}}"}},
+    {"type": "circle", "x": 25, "y": 12, "r": 1.5, "style": {"fill": "{{color}}"}},
+    {"type": "path", "d": "M 18 18 L 20 20 L 22 18", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 1.5}},
+    {"type": "line", "x": 6, "y": 16, "x2": 0, "y2": 14, "style": {"stroke": "{{color}}", "strokeWidth": 1}},
+    {"type": "line", "x": 6, "y": 18, "x2": 0, "y2": 20, "style": {"stroke": "{{color}}", "strokeWidth": 1}},
+    {"type": "line", "x": 34, "y": 16, "x2": 40, "y2": 14, "style": {"stroke": "{{color}}", "strokeWidth": 1}},
+    {"type": "line", "x": 34, "y": 18, "x2": 40, "y2": 20, "style": {"stroke": "{{color}}", "strokeWidth": 1}},
+    {"type": "path", "d": "M 20 24 Q 24 24 28 28 Q 30 32 32 30", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 2, "strokeLinecap": "round"}},
+    {"type": "text", "x": 20, "y": 38, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "{{color}}"}, "if": "label"}
+  ]
+}

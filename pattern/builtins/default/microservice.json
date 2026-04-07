@@ -1,0 +1,14 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#00897B"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 50,
+  "height": 50,
+  "elements": [
+    {"type": "path", "d": "M 25 4 L 44 14 L 44 34 L 25 44 L 6 34 L 6 14 Z", "style": {"fill": "#E0F2F1", "stroke": "{{color}}", "strokeWidth": 2, "strokeLinejoin": "round"}},
+    {"type": "circle", "x": 25, "y": 24, "r": 8, "style": {"fill": "{{color}}"}},
+    {"type": "circle", "x": 25, "y": 24, "r": 4, "style": {"fill": "#E0F2F1"}},
+    {"type": "text", "x": 25, "y": 50, "text": "{{label}}", "align": "center", "style": {"fontSize": 8, "fill": "#333"}, "if": "label"}
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#37474F"},
+    "screenColor": {"type": "color", "default": "#BBDEFB"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 50,
+  "height": 65,
+  "elements": [
+    {"type": "rect", "x": 2, "y": 0, "width": 46, "height": 58, "style": {"fill": "{{color}}", "stroke": "#263238", "strokeWidth": 1.5, "rx": 4}},
+    {"type": "rect", "x": 5, "y": 5, "width": 40, "height": 44, "style": {"fill": "{{screenColor}}", "rx": 1}},
+    {"type": "circle", "x": 25, "y": 53, "r": 2.5, "style": {"fill": "#546E7A", "stroke": "#263238", "strokeWidth": 0.8}},
+    {"type": "text", "x": 25, "y": 64, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

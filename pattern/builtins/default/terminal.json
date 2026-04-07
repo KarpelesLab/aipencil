@@ -1,0 +1,18 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#263238"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 56,
+  "height": 45,
+  "elements": [
+    {"type": "rect", "x": 2, "y": 2, "width": 52, "height": 36, "style": {"fill": "{{color}}", "stroke": "#37474F", "strokeWidth": 2, "rx": 4}},
+    {"type": "rect", "x": 2, "y": 2, "width": 52, "height": 8, "style": {"fill": "#37474F", "rx": 4}},
+    {"type": "circle", "x": 9, "y": 6, "r": 2, "style": {"fill": "#F44336"}},
+    {"type": "circle", "x": 16, "y": 6, "r": 2, "style": {"fill": "#FFC107"}},
+    {"type": "circle", "x": 23, "y": 6, "r": 2, "style": {"fill": "#4CAF50"}},
+    {"type": "path", "d": "M 10 18 L 16 22 L 10 26", "style": {"fill": "none", "stroke": "#4CAF50", "strokeWidth": 2, "strokeLinecap": "round", "strokeLinejoin": "round"}},
+    {"type": "line", "x": 20, "y": 26, "x2": 34, "y2": 26, "style": {"stroke": "#B0BEC5", "strokeWidth": 2}},
+    {"type": "text", "x": 28, "y": 44, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

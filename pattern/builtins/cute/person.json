@@ -1,0 +1,58 @@
+{
+  "params": {
+    "skinColor": {"type": "color", "default": "#fde8d0"},
+    "hairColor": {"type": "color", "default": "#F48FB1"},
+    "shirtColor": {"type": "color", "default": "#CE93D8"},
+    "pantsColor": {"type": "color", "default": "#90CAF9"},
+    "angle": {"type": "string", "default": "front", "enum": ["front", "quarter-right", "right", "quarter-left", "left", "back"]},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 50,
+  "height": 80,
+  "elements": [
+    {"type": "circle", "x": 25, "y": 18, "r": 16, "style": {"fill": "{{skinColor}}"}},
+
+    {"type": "path", "d": "M 9 14 Q 9 2 25 2 Q 41 2 41 14 Q 38 10 32 10 Q 25 8 18 10 Q 12 10 9 14 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 18, "y": 16, "r": 4, "style": {"fill": "#333"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 19.5, "y": 14.5, "r": 1.8, "style": {"fill": "#fff"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 32, "y": 16, "r": 4, "style": {"fill": "#333"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 33.5, "y": 14.5, "r": 1.8, "style": {"fill": "#fff"}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 10, "y": 24, "rx": 4, "ry": 3, "style": {"fill": "#FFCDD2", "opacity": 0.5}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 40, "y": 24, "rx": 4, "ry": 3, "style": {"fill": "#FFCDD2", "opacity": 0.5}, "if": "angle == 'front'"},
+    {"type": "path", "d": "M 22 26 Q 25 30 28 26", "style": {"fill": "none", "stroke": "#c48a6a", "strokeWidth": 1, "strokeLinecap": "round"}, "if": "angle == 'front'"},
+
+    {"type": "path", "d": "M 12 14 Q 12 2 28 2 Q 44 2 42 16 Q 38 10 30 10 Q 20 10 14 14 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 22, "y": 16, "r": 3.5, "style": {"fill": "#333"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 23, "y": 14.5, "r": 1.5, "style": {"fill": "#fff"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 36, "y": 16, "r": 4, "style": {"fill": "#333"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 37.5, "y": 14.5, "r": 1.8, "style": {"fill": "#fff"}, "if": "angle == 'quarter-right'"},
+
+    {"type": "path", "d": "M 38 14 Q 38 2 22 2 Q 6 2 8 16 Q 12 10 20 10 Q 30 10 36 14 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 14, "y": 16, "r": 4, "style": {"fill": "#333"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 12.5, "y": 14.5, "r": 1.8, "style": {"fill": "#fff"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 28, "y": 16, "r": 3.5, "style": {"fill": "#333"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 27, "y": 14.5, "r": 1.5, "style": {"fill": "#fff"}, "if": "angle == 'quarter-left'"},
+
+    {"type": "path", "d": "M 14 16 Q 16 2 30 2 Q 44 4 42 18 Q 36 10 24 12 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'right'"},
+    {"type": "circle", "x": 34, "y": 16, "r": 4, "style": {"fill": "#333"}, "if": "angle == 'right'"},
+    {"type": "circle", "x": 35.5, "y": 14.5, "r": 1.8, "style": {"fill": "#fff"}, "if": "angle == 'right'"},
+
+    {"type": "path", "d": "M 36 16 Q 34 2 20 2 Q 6 4 8 18 Q 14 10 26 12 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'left'"},
+    {"type": "circle", "x": 16, "y": 16, "r": 4, "style": {"fill": "#333"}, "if": "angle == 'left'"},
+    {"type": "circle", "x": 14.5, "y": 14.5, "r": 1.8, "style": {"fill": "#fff"}, "if": "angle == 'left'"},
+
+    {"type": "ellipse", "x": 25, "y": 12, "rx": 17, "ry": 14, "style": {"fill": "{{hairColor}}"}, "if": "angle == 'back'"},
+
+    {"type": "rect", "x": 14, "y": 34, "width": 22, "height": 18, "style": {"fill": "{{shirtColor}}", "rx": 6}},
+    {"type": "line", "x": 14, "y": 38, "x2": 6, "y2": 48, "style": {"stroke": "{{shirtColor}}", "strokeWidth": 6, "strokeLinecap": "round"}},
+    {"type": "line", "x": 36, "y": 38, "x2": 44, "y2": 48, "style": {"stroke": "{{shirtColor}}", "strokeWidth": 6, "strokeLinecap": "round"}},
+    {"type": "circle", "x": 6, "y": 48, "r": 4, "style": {"fill": "{{skinColor}}"}},
+    {"type": "circle", "x": 44, "y": 48, "r": 4, "style": {"fill": "{{skinColor}}"}},
+    {"type": "rect", "x": 16, "y": 52, "width": 8, "height": 16, "style": {"fill": "{{pantsColor}}", "rx": 4}},
+    {"type": "rect", "x": 26, "y": 52, "width": 8, "height": 16, "style": {"fill": "{{pantsColor}}", "rx": 4}},
+    {"type": "circle", "x": 20, "y": 70, "r": 4, "style": {"fill": "{{pantsColor}}"}},
+    {"type": "circle", "x": 30, "y": 70, "r": 4, "style": {"fill": "{{pantsColor}}"}},
+
+    {"type": "text", "x": 25, "y": 80, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

@@ -8,6 +8,7 @@ type Scene struct {
 	Background   string            `json:"background,omitempty"`
 	Padding      *float64          `json:"padding,omitempty"`
 	PixelPerfect bool              `json:"pixelPerfect,omitempty"`
+	ArtStyle     string            `json:"artStyle,omitempty"` // pattern style: "default", "comic", "manga", "stickman", "cute"
 	Defs         map[string]*Def   `json:"defs,omitempty"`
 	Styles       map[string]*Style `json:"styles,omitempty"`
 	Elements     []*Element        `json:"elements"`
@@ -70,6 +71,7 @@ type Element struct {
 	// Pattern instantiation
 	Pattern string         `json:"pattern,omitempty"`
 	Params  map[string]any `json:"params,omitempty"`
+	Track   string         `json:"track,omitempty"` // element ID to face toward (auto-computes angle param)
 
 	// Conditional (for pattern elements)
 	If string `json:"if,omitempty"`

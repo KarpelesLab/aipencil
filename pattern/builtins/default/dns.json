@@ -1,0 +1,14 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#1565C0"},
+    "label": {"type": "string", "default": "DNS"}
+  },
+  "width": 50,
+  "height": 50,
+  "elements": [
+    {"type": "circle", "x": 25, "y": 22, "r": 20, "style": {"fill": "#E3F2FD", "stroke": "{{color}}", "strokeWidth": 2}},
+    {"type": "text", "x": 25, "y": 20, "text": "DNS", "align": "center", "style": {"fontSize": 12, "fontWeight": "bold", "fill": "{{color}}"}},
+    {"type": "path", "d": "M 15 28 L 25 34 L 35 28", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 1.5, "strokeLinecap": "round"}},
+    {"type": "text", "x": 25, "y": 50, "text": "{{label}}", "align": "center", "style": {"fontSize": 8, "fill": "#333"}, "if": "label"}
+  ]
+}

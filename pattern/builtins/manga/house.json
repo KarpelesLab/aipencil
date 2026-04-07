@@ -1,0 +1,24 @@
+{
+  "params": {
+    "wallColor": {"type": "color", "default": "#FFF9C4"},
+    "roofColor": {"type": "color", "default": "#5D4037"},
+    "doorColor": {"type": "color", "default": "#795548"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 70,
+  "height": 75,
+  "elements": [
+    {"type": "rect", "x": 8, "y": 30, "width": 54, "height": 40, "style": {"fill": "{{wallColor}}", "stroke": "#bbb", "strokeWidth": 1}},
+    {"type": "path", "d": "M 4 33 L 35 6 L 66 33 Z", "style": {"fill": "{{roofColor}}"}},
+    {"type": "path", "d": "M 8 32 L 35 10 L 62 32", "style": {"fill": "none", "stroke": "#4E342E", "strokeWidth": 1}},
+    {"type": "rect", "x": 16, "y": 38, "width": 12, "height": 12, "style": {"fill": "#BBDEFB", "stroke": "#90A4AE", "strokeWidth": 1}},
+    {"type": "line", "x": 22, "y": 38, "x2": 22, "y2": 50, "style": {"stroke": "#90A4AE", "strokeWidth": 0.8}},
+    {"type": "line", "x": 16, "y": 44, "x2": 28, "y2": 44, "style": {"stroke": "#90A4AE", "strokeWidth": 0.8}},
+    {"type": "rect", "x": 42, "y": 38, "width": 12, "height": 12, "style": {"fill": "#BBDEFB", "stroke": "#90A4AE", "strokeWidth": 1}},
+    {"type": "line", "x": 48, "y": 38, "x2": 48, "y2": 50, "style": {"stroke": "#90A4AE", "strokeWidth": 0.8}},
+    {"type": "line", "x": 42, "y": 44, "x2": 54, "y2": 44, "style": {"stroke": "#90A4AE", "strokeWidth": 0.8}},
+    {"type": "rect", "x": 28, "y": 50, "width": 14, "height": 20, "style": {"fill": "{{doorColor}}", "rx": 1}},
+    {"type": "circle", "x": 38, "y": 60, "r": 1.5, "style": {"fill": "#FFD600"}},
+    {"type": "text", "x": 35, "y": 73, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

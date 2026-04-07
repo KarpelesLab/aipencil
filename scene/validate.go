@@ -23,10 +23,24 @@ var knownTypes = map[string]bool{
 	"viewport": true,
 }
 
+var knownStyles = map[string]bool{
+	"":         true,
+	"default":  true,
+	"comic":    true,
+	"manga":    true,
+	"stickman": true,
+	"cute":     true,
+}
+
 // Validate checks a parsed Scene for structural errors.
 // Returns a list of error strings (empty = valid).
 func Validate(s *Scene) []string {
 	var errs []string
+
+	if s.ArtStyle != "" && !knownStyles[s.ArtStyle] {
+		errs = append(errs, fmt.Sprintf("unknown artStyle %q (known: default, comic, manga, stickman, cute)", s.ArtStyle))
+	}
+
 	ids := make(map[string]bool)
 	for i, el := range s.Elements {
 		errs = append(errs, validateElement(el, fmt.Sprintf("elements[%d]", i), ids)...)

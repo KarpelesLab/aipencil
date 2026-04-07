@@ -1,0 +1,64 @@
+{
+  "params": {
+    "skinColor": {"type": "color", "default": "#fdd0b0"},
+    "hairColor": {"type": "color", "default": "#4a3728"},
+    "shirtColor": {"type": "color", "default": "#4488cc"},
+    "pantsColor": {"type": "color", "default": "#445566"},
+    "angle": {"type": "string", "default": "front", "enum": ["front", "quarter-right", "right", "quarter-left", "left", "back"]},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 50,
+  "height": 120,
+  "elements": [
+    {"type": "circle", "x": 25, "y": 18, "r": 15, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 25, "y": 8, "rx": 16, "ry": 10, "style": {"fill": "{{hairColor}}"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 19, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 31, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'front'"},
+    {"type": "path", "d": "M 20 24 Q 25 28 30 24", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1}, "if": "angle == 'front'"},
+
+    {"type": "circle", "x": 27, "y": 18, "r": 15, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1}, "if": "angle == 'quarter-right'"},
+    {"type": "path", "d": "M 12 8 Q 14 2 29 2 Q 44 4 42 14 Q 38 8 28 8 Q 18 6 14 10 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 23, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 35, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'quarter-right'"},
+    {"type": "path", "d": "M 24 24 Q 30 28 36 24", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1}, "if": "angle == 'quarter-right'"},
+    {"type": "ellipse", "x": 10, "y": 20, "rx": 3, "ry": 5, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 0.8}, "if": "angle == 'quarter-right'"},
+
+    {"type": "circle", "x": 23, "y": 18, "r": 15, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1}, "if": "angle == 'quarter-left'"},
+    {"type": "path", "d": "M 38 8 Q 36 2 21 2 Q 6 4 8 14 Q 12 8 22 8 Q 32 6 36 10 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 15, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 27, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'quarter-left'"},
+    {"type": "path", "d": "M 14 24 Q 20 28 26 24", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1}, "if": "angle == 'quarter-left'"},
+    {"type": "ellipse", "x": 40, "y": 20, "rx": 3, "ry": 5, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 0.8}, "if": "angle == 'quarter-left'"},
+
+    {"type": "circle", "x": 28, "y": 18, "r": 15, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1}, "if": "angle == 'right'"},
+    {"type": "path", "d": "M 13 10 Q 16 2 32 2 Q 44 4 43 16 Q 38 8 24 8 Q 16 6 14 12 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'right'"},
+    {"type": "circle", "x": 36, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'right'"},
+    {"type": "path", "d": "M 43 20 L 46 22 L 43 24", "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 0.8}, "if": "angle == 'right'"},
+    {"type": "path", "d": "M 34 24 Q 39 27 42 24", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1}, "if": "angle == 'right'"},
+    {"type": "ellipse", "x": 12, "y": 20, "rx": 3, "ry": 5, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 0.8}, "if": "angle == 'right'"},
+
+    {"type": "circle", "x": 22, "y": 18, "r": 15, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1}, "if": "angle == 'left'"},
+    {"type": "path", "d": "M 37 10 Q 34 2 18 2 Q 6 4 7 16 Q 12 8 26 8 Q 34 6 36 12 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'left'"},
+    {"type": "circle", "x": 14, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'left'"},
+    {"type": "path", "d": "M 7 20 L 4 22 L 7 24", "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 0.8}, "if": "angle == 'left'"},
+    {"type": "path", "d": "M 8 24 Q 13 27 16 24", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1}, "if": "angle == 'left'"},
+    {"type": "ellipse", "x": 38, "y": 20, "rx": 3, "ry": 5, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 0.8}, "if": "angle == 'left'"},
+
+    {"type": "circle", "x": 25, "y": 18, "r": 15, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1}, "if": "angle == 'back'"},
+    {"type": "ellipse", "x": 25, "y": 14, "rx": 16, "ry": 16, "style": {"fill": "{{hairColor}}"}, "if": "angle == 'back'"},
+    {"type": "ellipse", "x": 9, "y": 20, "rx": 3, "ry": 5, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 0.8}, "if": "angle == 'back'"},
+    {"type": "ellipse", "x": 41, "y": 20, "rx": 3, "ry": 5, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 0.8}, "if": "angle == 'back'"},
+
+    {"type": "rect", "x": 10, "y": 35, "width": 30, "height": 35, "style": {"fill": "{{shirtColor}}", "rx": 4}},
+    {"type": "line", "x": 10, "y": 40, "x2": 0, "y2": 65, "style": {"stroke": "{{shirtColor}}", "strokeWidth": 8, "strokeLinecap": "round"}},
+    {"type": "line", "x": 40, "y": 40, "x2": 50, "y2": 65, "style": {"stroke": "{{shirtColor}}", "strokeWidth": 8, "strokeLinecap": "round"}},
+    {"type": "circle", "x": 0, "y": 65, "r": 5, "style": {"fill": "{{skinColor}}"}},
+    {"type": "circle", "x": 50, "y": 65, "r": 5, "style": {"fill": "{{skinColor}}"}},
+    {"type": "rect", "x": 12, "y": 70, "width": 12, "height": 35, "style": {"fill": "{{pantsColor}}", "rx": 3}},
+    {"type": "rect", "x": 26, "y": 70, "width": 12, "height": 35, "style": {"fill": "{{pantsColor}}", "rx": 3}},
+    {"type": "rect", "x": 10, "y": 103, "width": 16, "height": 7, "style": {"fill": "#555", "rx": 2}},
+    {"type": "rect", "x": 24, "y": 103, "width": 16, "height": 7, "style": {"fill": "#555", "rx": 2}},
+
+    {"type": "text", "x": 25, "y": 118, "text": "{{label}}", "align": "center", "style": {"fontSize": 10, "fill": "#333"}, "if": "label"}
+  ]
+}

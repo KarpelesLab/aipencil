@@ -25,6 +25,8 @@ type ValidateInput struct {
 
 type ListPatternsInput struct{}
 
+type ListStylesInput struct{}
+
 // Run starts the MCP server on stdio.
 func Run() error {
 	server := mcp.NewServer(
@@ -60,6 +62,13 @@ func Run() error {
 		return handleListPatterns(registry)
 	})
 
+	mcp.AddTool(server, &mcp.Tool{
+		Name:        "list_styles",
+		Description: "List available art styles. Set \"artStyle\" in the scene root to change the visual style of all patterns. Styles override default patterns with style-specific variants; patterns without a style variant fall back to default.",
+	}, func(ctx context.Context, req *mcp.CallToolRequest, input ListStylesInput) (*mcp.CallToolResult, any, error) {
+		return handleListStyles()
+	})
+
 	return server.Run(context.Background(), &mcp.StdioTransport{})
 }
 
@@ -80,6 +89,8 @@ func handleRender(input RenderInput, registry *pattern.Registry) (*mcp.CallToolR
 		}, nil, nil
 	}
 
+	registry.SetStyle(s.ArtStyle)
+
 	if err := registry.Expand(s); err != nil {
 		return &mcp.CallToolResult{
 			Content: []mcp.Content{&mcp.TextContent{Text: fmt.Sprintf("Pattern error: %v", err)}},
@@ -88,6 +99,13 @@ func handleRender(input RenderInput, registry *pattern.Registry) (*mcp.CallToolR
 	}
 
 	layout.Layout(s)
+
+	if err := registry.ResolveTrack(s); err != nil {
+		return &mcp.CallToolResult{
+			Content: []mcp.Content{&mcp.TextContent{Text: fmt.Sprintf("Track error: %v", err)}},
+			IsError: true,
+		}, nil, nil
+	}
 
 	format := input.Format
 	if format == "" {
@@ -174,6 +192,23 @@ func handleListPatterns(registry *pattern.Registry) (*mcp.CallToolResult, any, e
 		sb.WriteByte('\n')
 	}
 
+	return &mcp.CallToolResult{
+		Content: []mcp.Content{&mcp.TextContent{Text: sb.String()}},
+	}, nil, nil
+}
+
+func handleListStyles() (*mcp.CallToolResult, any, error) {
+	styles := pattern.AvailableStyles
+	var sb strings.Builder
+	sb.WriteString("Available art styles (set \"artStyle\" in scene root):\n\n")
+	for _, s := range styles {
+		if s == "default" {
+			fmt.Fprintf(&sb, "- **%s** (used when artStyle is omitted)\n", s)
+		} else {
+			fmt.Fprintf(&sb, "- **%s**\n", s)
+		}
+	}
+	sb.WriteString("\nPatterns not overridden by a style fall back to the default variant.")
 	return &mcp.CallToolResult{
 		Content: []mcp.Content{&mcp.TextContent{Text: sb.String()}},
 	}, nil, nil

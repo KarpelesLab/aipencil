@@ -1,0 +1,22 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#D7CCC8"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 50,
+  "height": 50,
+  "elements": [
+    {"type": "circle", "x": 25, "y": 22, "r": 20, "style": {"fill": "{{color}}"}},
+    {"type": "path", "d": "M 8 14 Q 2 10 0 20 Q -1 28 6 24 L 8 20 Z", "style": {"fill": "#BCAAA4"}},
+    {"type": "path", "d": "M 42 14 Q 48 10 50 20 Q 51 28 44 24 L 42 20 Z", "style": {"fill": "#BCAAA4"}},
+    {"type": "circle", "x": 16, "y": 20, "r": 5, "style": {"fill": "#333"}},
+    {"type": "circle", "x": 18, "y": 18, "r": 2, "style": {"fill": "#fff"}},
+    {"type": "circle", "x": 34, "y": 20, "r": 5, "style": {"fill": "#333"}},
+    {"type": "circle", "x": 36, "y": 18, "r": 2, "style": {"fill": "#fff"}},
+    {"type": "ellipse", "x": 25, "y": 28, "rx": 4, "ry": 3, "style": {"fill": "#333"}},
+    {"type": "path", "d": "M 21 32 Q 25 36 29 32", "style": {"fill": "none", "stroke": "#795548", "strokeWidth": 1.2, "strokeLinecap": "round"}},
+    {"type": "ellipse", "x": 8, "y": 28, "rx": 5, "ry": 3, "style": {"fill": "#FFCDD2", "opacity": 0.5}},
+    {"type": "ellipse", "x": 42, "y": 28, "rx": 5, "ry": 3, "style": {"fill": "#FFCDD2", "opacity": 0.5}},
+    {"type": "text", "x": 25, "y": 48, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

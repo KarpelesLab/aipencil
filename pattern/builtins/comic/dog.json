@@ -1,0 +1,72 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#8D6E63"},
+    "angle": {"type": "string", "default": "front", "enum": ["front", "quarter-right", "right", "quarter-left", "left", "back"]},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 55,
+  "height": 60,
+  "elements": [
+    {"type": "path", "d": "M 8 18 Q 2 16 0 28 Q -1 36 6 34 L 10 28 Z", "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2, "strokeLinejoin": "round"}, "if": "angle == 'front'"},
+    {"type": "path", "d": "M 47 18 Q 53 16 55 28 Q 56 36 49 34 L 45 28 Z", "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2, "strokeLinejoin": "round"}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 27, "y": 25, "rx": 22, "ry": 19, "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2.5}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 27, "y": 32, "rx": 12, "ry": 9, "style": {"fill": "#D7CCC8", "stroke": "#333", "strokeWidth": 1.5}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 18, "y": 22, "rx": 5, "ry": 5.5, "style": {"fill": "#fff", "stroke": "#333", "strokeWidth": 1.5}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 19, "y": 22, "r": 3, "style": {"fill": "#333"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 20, "y": 21, "r": 1, "style": {"fill": "#fff"}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 37, "y": 22, "rx": 5, "ry": 5.5, "style": {"fill": "#fff", "stroke": "#333", "strokeWidth": 1.5}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 38, "y": 22, "r": 3, "style": {"fill": "#333"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 39, "y": 21, "r": 1, "style": {"fill": "#fff"}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 27, "y": 30, "rx": 5, "ry": 3.5, "style": {"fill": "#333", "stroke": "#333", "strokeWidth": 1}, "if": "angle == 'front'"},
+    {"type": "path", "d": "M 22 36 Q 27 42 32 36", "style": {"fill": "none", "stroke": "#333", "strokeWidth": 1.8, "strokeLinecap": "round"}, "if": "angle == 'front'"},
+    {"type": "path", "d": "M 27 36 L 27 39", "style": {"stroke": "#333", "strokeWidth": 1.5}, "if": "angle == 'front'"},
+
+    {"type": "path", "d": "M 12 18 Q 6 16 4 28 Q 3 36 10 34 L 14 28 Z", "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2, "strokeLinejoin": "round"}, "if": "angle == 'quarter-right'"},
+    {"type": "path", "d": "M 47 18 Q 53 16 55 28 Q 56 36 49 34 L 45 28 Z", "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2, "strokeLinejoin": "round"}, "if": "angle == 'quarter-right'"},
+    {"type": "ellipse", "x": 30, "y": 25, "rx": 22, "ry": 19, "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2.5}, "if": "angle == 'quarter-right'"},
+    {"type": "ellipse", "x": 34, "y": 32, "rx": 12, "ry": 9, "style": {"fill": "#D7CCC8", "stroke": "#333", "strokeWidth": 1.5}, "if": "angle == 'quarter-right'"},
+    {"type": "ellipse", "x": 24, "y": 22, "rx": 4, "ry": 5, "style": {"fill": "#fff", "stroke": "#333", "strokeWidth": 1.5}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 25, "y": 22, "r": 2.5, "style": {"fill": "#333"}, "if": "angle == 'quarter-right'"},
+    {"type": "ellipse", "x": 40, "y": 22, "rx": 5, "ry": 5.5, "style": {"fill": "#fff", "stroke": "#333", "strokeWidth": 1.5}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 41, "y": 22, "r": 3, "style": {"fill": "#333"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 42, "y": 21, "r": 1, "style": {"fill": "#fff"}, "if": "angle == 'quarter-right'"},
+    {"type": "ellipse", "x": 36, "y": 30, "rx": 5, "ry": 3.5, "style": {"fill": "#333"}, "if": "angle == 'quarter-right'"},
+    {"type": "path", "d": "M 30 36 Q 36 42 40 36", "style": {"fill": "none", "stroke": "#333", "strokeWidth": 1.8, "strokeLinecap": "round"}, "if": "angle == 'quarter-right'"},
+
+    {"type": "path", "d": "M 8 18 Q 2 16 0 28 Q -1 36 6 34 L 10 28 Z", "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2, "strokeLinejoin": "round"}, "if": "angle == 'quarter-left'"},
+    {"type": "path", "d": "M 43 18 Q 49 16 51 28 Q 52 36 45 34 L 41 28 Z", "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2, "strokeLinejoin": "round"}, "if": "angle == 'quarter-left'"},
+    {"type": "ellipse", "x": 25, "y": 25, "rx": 22, "ry": 19, "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2.5}, "if": "angle == 'quarter-left'"},
+    {"type": "ellipse", "x": 21, "y": 32, "rx": 12, "ry": 9, "style": {"fill": "#D7CCC8", "stroke": "#333", "strokeWidth": 1.5}, "if": "angle == 'quarter-left'"},
+    {"type": "ellipse", "x": 15, "y": 22, "rx": 5, "ry": 5.5, "style": {"fill": "#fff", "stroke": "#333", "strokeWidth": 1.5}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 14, "y": 22, "r": 3, "style": {"fill": "#333"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 13, "y": 21, "r": 1, "style": {"fill": "#fff"}, "if": "angle == 'quarter-left'"},
+    {"type": "ellipse", "x": 31, "y": 22, "rx": 4, "ry": 5, "style": {"fill": "#fff", "stroke": "#333", "strokeWidth": 1.5}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 30, "y": 22, "r": 2.5, "style": {"fill": "#333"}, "if": "angle == 'quarter-left'"},
+    {"type": "ellipse", "x": 19, "y": 30, "rx": 5, "ry": 3.5, "style": {"fill": "#333"}, "if": "angle == 'quarter-left'"},
+    {"type": "path", "d": "M 15 36 Q 19 42 25 36", "style": {"fill": "none", "stroke": "#333", "strokeWidth": 1.8, "strokeLinecap": "round"}, "if": "angle == 'quarter-left'"},
+
+    {"type": "path", "d": "M 14 18 Q 8 16 6 28 Q 5 36 12 34 L 16 28 Z", "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2, "strokeLinejoin": "round"}, "if": "angle == 'right'"},
+    {"type": "ellipse", "x": 32, "y": 25, "rx": 20, "ry": 19, "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2.5}, "if": "angle == 'right'"},
+    {"type": "ellipse", "x": 40, "y": 30, "rx": 10, "ry": 8, "style": {"fill": "#D7CCC8", "stroke": "#333", "strokeWidth": 1.5}, "if": "angle == 'right'"},
+    {"type": "ellipse", "x": 40, "y": 22, "rx": 5, "ry": 5.5, "style": {"fill": "#fff", "stroke": "#333", "strokeWidth": 1.5}, "if": "angle == 'right'"},
+    {"type": "circle", "x": 41, "y": 22, "r": 3, "style": {"fill": "#333"}, "if": "angle == 'right'"},
+    {"type": "circle", "x": 42, "y": 21, "r": 1, "style": {"fill": "#fff"}, "if": "angle == 'right'"},
+    {"type": "ellipse", "x": 50, "y": 28, "rx": 5, "ry": 3.5, "style": {"fill": "#333"}, "if": "angle == 'right'"},
+    {"type": "path", "d": "M 42 36 Q 46 40 50 36", "style": {"fill": "none", "stroke": "#333", "strokeWidth": 1.8, "strokeLinecap": "round"}, "if": "angle == 'right'"},
+
+    {"type": "path", "d": "M 41 18 Q 47 16 49 28 Q 50 36 43 34 L 39 28 Z", "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2, "strokeLinejoin": "round"}, "if": "angle == 'left'"},
+    {"type": "ellipse", "x": 23, "y": 25, "rx": 20, "ry": 19, "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2.5}, "if": "angle == 'left'"},
+    {"type": "ellipse", "x": 15, "y": 30, "rx": 10, "ry": 8, "style": {"fill": "#D7CCC8", "stroke": "#333", "strokeWidth": 1.5}, "if": "angle == 'left'"},
+    {"type": "ellipse", "x": 15, "y": 22, "rx": 5, "ry": 5.5, "style": {"fill": "#fff", "stroke": "#333", "strokeWidth": 1.5}, "if": "angle == 'left'"},
+    {"type": "circle", "x": 14, "y": 22, "r": 3, "style": {"fill": "#333"}, "if": "angle == 'left'"},
+    {"type": "circle", "x": 13, "y": 21, "r": 1, "style": {"fill": "#fff"}, "if": "angle == 'left'"},
+    {"type": "ellipse", "x": 5, "y": 28, "rx": 5, "ry": 3.5, "style": {"fill": "#333"}, "if": "angle == 'left'"},
+    {"type": "path", "d": "M 5 36 Q 9 40 13 36", "style": {"fill": "none", "stroke": "#333", "strokeWidth": 1.8, "strokeLinecap": "round"}, "if": "angle == 'left'"},
+
+    {"type": "path", "d": "M 8 18 Q 2 16 0 28 Q -1 36 6 34 L 10 28 Z", "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2, "strokeLinejoin": "round"}, "if": "angle == 'back'"},
+    {"type": "path", "d": "M 47 18 Q 53 16 55 28 Q 56 36 49 34 L 45 28 Z", "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2, "strokeLinejoin": "round"}, "if": "angle == 'back'"},
+    {"type": "ellipse", "x": 27, "y": 25, "rx": 22, "ry": 19, "style": {"fill": "{{color}}", "stroke": "#333", "strokeWidth": 2.5}, "if": "angle == 'back'"},
+
+    {"type": "text", "x": 27, "y": 55, "text": "{{label}}", "align": "center", "style": {"fontSize": 10, "fontWeight": "bold", "fill": "#333"}, "if": "label"}
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#1565C0"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 60,
+  "height": 50,
+  "elements": [
+    {"type": "rect", "x": 2, "y": 2, "width": 56, "height": 40, "style": {"fill": "#fff", "stroke": "#B0BEC5", "strokeWidth": 2, "rx": 4}},
+    {"type": "rect", "x": 2, "y": 2, "width": 56, "height": 10, "style": {"fill": "#ECEFF1", "rx": 4}},
+    {"type": "circle", "x": 9, "y": 7, "r": 2, "style": {"fill": "#F44336"}},
+    {"type": "circle", "x": 16, "y": 7, "r": 2, "style": {"fill": "#FFC107"}},
+    {"type": "circle", "x": 23, "y": 7, "r": 2, "style": {"fill": "#4CAF50"}},
+    {"type": "rect", "x": 28, "y": 4, "width": 26, "height": 6, "style": {"fill": "#fff", "stroke": "#B0BEC5", "strokeWidth": 1, "rx": 3}},
+    {"type": "rect", "x": 8, "y": 16, "width": 20, "height": 4, "style": {"fill": "{{color}}", "rx": 1}},
+    {"type": "rect", "x": 8, "y": 24, "width": 44, "height": 2, "style": {"fill": "#E0E0E0", "rx": 1}},
+    {"type": "rect", "x": 8, "y": 30, "width": 44, "height": 2, "style": {"fill": "#E0E0E0", "rx": 1}},
+    {"type": "rect", "x": 8, "y": 36, "width": 30, "height": 2, "style": {"fill": "#E0E0E0", "rx": 1}},
+    {"type": "text", "x": 30, "y": 49, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

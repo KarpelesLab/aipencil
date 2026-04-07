@@ -1,0 +1,16 @@
+{
+  "params": {
+    "trunkColor": {"type": "color", "default": "#5D4037"},
+    "leafColor": {"type": "color", "default": "#66BB6A"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 60,
+  "height": 80,
+  "elements": [
+    {"type": "rect", "x": 25, "y": 50, "width": 10, "height": 28, "style": {"fill": "{{trunkColor}}"}},
+    {"type": "path", "d": "M 30 8 Q 6 8 4 30 Q 2 42 14 42 Q 6 46 8 54 Q 10 60 22 56 Q 16 60 22 66 L 30 60 L 38 66 Q 44 60 38 56 Q 50 60 52 54 Q 54 46 46 42 Q 58 42 56 30 Q 54 8 30 8 Z", "style": {"fill": "{{leafColor}}"}},
+    {"type": "path", "d": "M 20 22 Q 26 18 32 24", "style": {"fill": "none", "stroke": "#43A047", "strokeWidth": 1.5}},
+    {"type": "path", "d": "M 36 30 Q 42 26 46 34", "style": {"fill": "none", "stroke": "#43A047", "strokeWidth": 1.5}},
+    {"type": "text", "x": 30, "y": 78, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

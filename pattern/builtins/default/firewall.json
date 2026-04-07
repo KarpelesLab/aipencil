@@ -1,0 +1,22 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#E53935"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 60,
+  "height": 55,
+  "elements": [
+    {"type": "rect", "x": 5, "y": 0, "width": 50, "height": 40, "style": {"fill": "#FFCDD2", "stroke": "{{color}}", "strokeWidth": 2, "rx": 2}},
+    {"type": "rect", "x": 5, "y": 0, "width": 10, "height": 10, "style": {"fill": "{{color}}"}},
+    {"type": "rect", "x": 25, "y": 0, "width": 10, "height": 10, "style": {"fill": "{{color}}"}},
+    {"type": "rect", "x": 45, "y": 0, "width": 10, "height": 10, "style": {"fill": "{{color}}"}},
+    {"type": "rect", "x": 15, "y": 10, "width": 10, "height": 10, "style": {"fill": "{{color}}"}},
+    {"type": "rect", "x": 35, "y": 10, "width": 10, "height": 10, "style": {"fill": "{{color}}"}},
+    {"type": "rect", "x": 5, "y": 20, "width": 10, "height": 10, "style": {"fill": "{{color}}"}},
+    {"type": "rect", "x": 25, "y": 20, "width": 10, "height": 10, "style": {"fill": "{{color}}"}},
+    {"type": "rect", "x": 45, "y": 20, "width": 10, "height": 10, "style": {"fill": "{{color}}"}},
+    {"type": "rect", "x": 15, "y": 30, "width": 10, "height": 10, "style": {"fill": "{{color}}"}},
+    {"type": "rect", "x": 35, "y": 30, "width": 10, "height": 10, "style": {"fill": "{{color}}"}},
+    {"type": "text", "x": 30, "y": 52, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

@@ -90,6 +90,9 @@ func main() {
 		return
 	}
 
+	// Apply art style
+	registry.SetStyle(s.ArtStyle)
+
 	// Expand patterns
 	if err := registry.Expand(s); err != nil {
 		fmt.Fprintf(os.Stderr, "pattern error: %v\n", err)
@@ -98,6 +101,12 @@ func main() {
 
 	// Layout
 	layout.Layout(s)
+
+	// Resolve tracked patterns (deferred expansion)
+	if err := registry.ResolveTrack(s); err != nil {
+		fmt.Fprintf(os.Stderr, "track error: %v\n", err)
+		os.Exit(1)
+	}
 
 	// Infer format from output extension if not specified
 	outFormat := *format

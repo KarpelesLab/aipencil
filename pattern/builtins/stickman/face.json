@@ -1,0 +1,41 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#333"},
+    "expression": {"type": "string", "default": "neutral", "enum": ["neutral", "happy", "sad", "surprised"]},
+    "angle": {"type": "string", "default": "front", "enum": ["front", "quarter-right", "right", "quarter-left", "left", "back"]},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 40,
+  "height": 50,
+  "elements": [
+    {"type": "circle", "x": 20, "y": 18, "r": 16, "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 2}, "if": "angle != 'back'"},
+    {"type": "circle", "x": 20, "y": 18, "r": 16, "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 2}, "if": "angle == 'back'"},
+
+    {"type": "circle", "x": 13, "y": 16, "r": 2, "style": {"fill": "{{color}}"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 27, "y": 16, "r": 2, "style": {"fill": "{{color}}"}, "if": "angle == 'front'"},
+    {"type": "path", "d": "M 14 26 Q 20 32 26 26", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'front' && expression == 'happy'"},
+    {"type": "line", "x": 14, "y": 26, "x2": 26, "y2": 26, "style": {"stroke": "{{color}}", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'front' && expression == 'neutral'"},
+    {"type": "path", "d": "M 14 28 Q 20 24 26 28", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'front' && expression == 'sad'"},
+    {"type": "circle", "x": 20, "y": 26, "r": 3, "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 1.5}, "if": "angle == 'front' && expression == 'surprised'"},
+
+    {"type": "circle", "x": 18, "y": 16, "r": 2, "style": {"fill": "{{color}}"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 30, "y": 16, "r": 2, "style": {"fill": "{{color}}"}, "if": "angle == 'quarter-right'"},
+    {"type": "path", "d": "M 18 26 Q 26 30 32 26", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'quarter-right' && expression == 'happy'"},
+    {"type": "line", "x": 18, "y": 26, "x2": 32, "y2": 26, "style": {"stroke": "{{color}}", "strokeWidth": 1.5}, "if": "angle == 'quarter-right' && expression == 'neutral'"},
+
+    {"type": "circle", "x": 10, "y": 16, "r": 2, "style": {"fill": "{{color}}"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 22, "y": 16, "r": 2, "style": {"fill": "{{color}}"}, "if": "angle == 'quarter-left'"},
+    {"type": "path", "d": "M 8 26 Q 14 30 22 26", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'quarter-left' && expression == 'happy'"},
+    {"type": "line", "x": 8, "y": 26, "x2": 22, "y2": 26, "style": {"stroke": "{{color}}", "strokeWidth": 1.5}, "if": "angle == 'quarter-left' && expression == 'neutral'"},
+
+    {"type": "circle", "x": 28, "y": 16, "r": 2, "style": {"fill": "{{color}}"}, "if": "angle == 'right'"},
+    {"type": "line", "x": 26, "y": 26, "x2": 34, "y2": 26, "style": {"stroke": "{{color}}", "strokeWidth": 1.5}, "if": "angle == 'right' && expression == 'neutral'"},
+    {"type": "path", "d": "M 36 20 L 38 22 L 36 24", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 1.5}, "if": "angle == 'right'"},
+
+    {"type": "circle", "x": 12, "y": 16, "r": 2, "style": {"fill": "{{color}}"}, "if": "angle == 'left'"},
+    {"type": "line", "x": 6, "y": 26, "x2": 14, "y2": 26, "style": {"stroke": "{{color}}", "strokeWidth": 1.5}, "if": "angle == 'left' && expression == 'neutral'"},
+    {"type": "path", "d": "M 4 20 L 2 22 L 4 24", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 1.5}, "if": "angle == 'left'"},
+
+    {"type": "text", "x": 20, "y": 46, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "{{color}}"}, "if": "label"}
+  ]
+}

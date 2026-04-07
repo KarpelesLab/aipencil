@@ -45,8 +45,19 @@ func formatParam(v any) string {
 
 // EvalCondition evaluates simple conditions for the "if" field.
 // Supports: "param == 'value'", "param != 'value'", "param" (truthy check).
+// Supports && (AND) and || (OR) to combine conditions.
 func EvalCondition(expr string, params map[string]any) bool {
 	expr = strings.TrimSpace(expr)
+
+	// Handle || (OR) — lowest precedence
+	if parts := strings.SplitN(expr, "||", 2); len(parts) == 2 {
+		return EvalCondition(parts[0], params) || EvalCondition(parts[1], params)
+	}
+
+	// Handle && (AND)
+	if parts := strings.SplitN(expr, "&&", 2); len(parts) == 2 {
+		return EvalCondition(parts[0], params) && EvalCondition(parts[1], params)
+	}
 
 	// Check for == or !=
 	for _, op := range []string{"!=", "=="} {

@@ -1,0 +1,17 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#5D4037"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 60,
+  "height": 45,
+  "elements": [
+    {"type": "rect", "x": 4, "y": 4, "width": 52, "height": 32, "style": {"fill": "#EFEBE9", "stroke": "{{color}}", "strokeWidth": 2, "rx": 3}},
+    {"type": "rect", "x": 10, "y": 10, "width": 40, "height": 6, "style": {"fill": "{{color}}", "rx": 1}},
+    {"type": "circle", "x": 44, "y": 13, "r": 1.5, "style": {"fill": "#4CAF50"}},
+    {"type": "rect", "x": 10, "y": 20, "width": 40, "height": 6, "style": {"fill": "{{color}}", "rx": 1}},
+    {"type": "circle", "x": 44, "y": 23, "r": 1.5, "style": {"fill": "#4CAF50"}},
+    {"type": "rect", "x": 10, "y": 30, "width": 40, "height": 2, "style": {"fill": "#BCAAA4", "rx": 1}},
+    {"type": "text", "x": 30, "y": 44, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#A0522D"},
+    "spotColor": {"type": "color", "default": "#D2B48C"},
+    "angle": {"type": "string", "default": "front", "enum": ["front", "quarter-right", "right", "quarter-left", "left", "back"]},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 60,
+  "height": 60,
+  "elements": [
+    {"type": "ellipse", "x": 30, "y": 38, "rx": 22, "ry": 18, "style": {"fill": "{{color}}"}},
+
+    {"type": "circle", "x": 30, "y": 18, "r": 16, "style": {"fill": "{{color}}"}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 10, "y": 12, "rx": 8, "ry": 12, "style": {"fill": "{{spotColor}}"}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 50, "y": 12, "rx": 8, "ry": 12, "style": {"fill": "{{spotColor}}"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 23, "y": 16, "r": 3, "style": {"fill": "#fff"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 23, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 37, "y": 16, "r": 3, "style": {"fill": "#fff"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 37, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 30, "y": 24, "rx": 4, "ry": 3, "style": {"fill": "#333"}, "if": "angle == 'front'"},
+    {"type": "path", "d": "M 26 28 Q 30 32 34 28", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.2}, "if": "angle == 'front'"},
+
+    {"type": "circle", "x": 32, "y": 18, "r": 16, "style": {"fill": "{{color}}"}, "if": "angle == 'quarter-right'"},
+    {"type": "ellipse", "x": 14, "y": 12, "rx": 7, "ry": 12, "style": {"fill": "{{spotColor}}"}, "if": "angle == 'quarter-right'"},
+    {"type": "ellipse", "x": 50, "y": 12, "rx": 8, "ry": 12, "style": {"fill": "{{spotColor}}"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 27, "y": 16, "r": 2.5, "style": {"fill": "#fff"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 27, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 40, "y": 16, "r": 3, "style": {"fill": "#fff"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 40, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'quarter-right'"},
+    {"type": "ellipse", "x": 36, "y": 24, "rx": 4, "ry": 3, "style": {"fill": "#333"}, "if": "angle == 'quarter-right'"},
+    {"type": "path", "d": "M 32 28 Q 36 32 40 28", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.2}, "if": "angle == 'quarter-right'"},
+
+    {"type": "circle", "x": 28, "y": 18, "r": 16, "style": {"fill": "{{color}}"}, "if": "angle == 'quarter-left'"},
+    {"type": "ellipse", "x": 10, "y": 12, "rx": 8, "ry": 12, "style": {"fill": "{{spotColor}}"}, "if": "angle == 'quarter-left'"},
+    {"type": "ellipse", "x": 46, "y": 12, "rx": 7, "ry": 12, "style": {"fill": "{{spotColor}}"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 20, "y": 16, "r": 3, "style": {"fill": "#fff"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 20, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 33, "y": 16, "r": 2.5, "style": {"fill": "#fff"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 33, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'quarter-left'"},
+    {"type": "ellipse", "x": 24, "y": 24, "rx": 4, "ry": 3, "style": {"fill": "#333"}, "if": "angle == 'quarter-left'"},
+    {"type": "path", "d": "M 20 28 Q 24 32 28 28", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.2}, "if": "angle == 'quarter-left'"},
+
+    {"type": "circle", "x": 34, "y": 18, "r": 14, "style": {"fill": "{{color}}"}, "if": "angle == 'right'"},
+    {"type": "ellipse", "x": 20, "y": 10, "rx": 8, "ry": 12, "style": {"fill": "{{spotColor}}"}, "if": "angle == 'right'"},
+    {"type": "circle", "x": 40, "y": 16, "r": 3, "style": {"fill": "#fff"}, "if": "angle == 'right'"},
+    {"type": "circle", "x": 40, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'right'"},
+    {"type": "ellipse", "x": 48, "y": 22, "rx": 4, "ry": 3, "style": {"fill": "#333"}, "if": "angle == 'right'"},
+    {"type": "path", "d": "M 42 28 Q 46 31 48 28", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.2}, "if": "angle == 'right'"},
+
+    {"type": "circle", "x": 26, "y": 18, "r": 14, "style": {"fill": "{{color}}"}, "if": "angle == 'left'"},
+    {"type": "ellipse", "x": 40, "y": 10, "rx": 8, "ry": 12, "style": {"fill": "{{spotColor}}"}, "if": "angle == 'left'"},
+    {"type": "circle", "x": 20, "y": 16, "r": 3, "style": {"fill": "#fff"}, "if": "angle == 'left'"},
+    {"type": "circle", "x": 20, "y": 16, "r": 1.5, "style": {"fill": "#333"}, "if": "angle == 'left'"},
+    {"type": "ellipse", "x": 12, "y": 22, "rx": 4, "ry": 3, "style": {"fill": "#333"}, "if": "angle == 'left'"},
+    {"type": "path", "d": "M 12 28 Q 14 31 18 28", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.2}, "if": "angle == 'left'"},
+
+    {"type": "circle", "x": 30, "y": 18, "r": 16, "style": {"fill": "{{color}}"}, "if": "angle == 'back'"},
+    {"type": "ellipse", "x": 10, "y": 12, "rx": 8, "ry": 12, "style": {"fill": "{{spotColor}}"}, "if": "angle == 'back'"},
+    {"type": "ellipse", "x": 50, "y": 12, "rx": 8, "ry": 12, "style": {"fill": "{{spotColor}}"}, "if": "angle == 'back'"},
+
+    {"type": "path", "d": "M 50 42 Q 60 38 58 48", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 4, "strokeLinecap": "round"}},
+    {"type": "text", "x": 30, "y": 60, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

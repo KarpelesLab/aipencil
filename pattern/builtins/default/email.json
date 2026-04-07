@@ -1,0 +1,13 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#1E88E5"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 50,
+  "height": 42,
+  "elements": [
+    {"type": "rect", "x": 2, "y": 4, "width": 46, "height": 30, "style": {"fill": "#E3F2FD", "stroke": "{{color}}", "strokeWidth": 2, "rx": 2}},
+    {"type": "path", "d": "M 2 6 L 25 22 L 48 6", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 2, "strokeLinejoin": "round"}},
+    {"type": "text", "x": 25, "y": 42, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

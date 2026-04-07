@@ -1,0 +1,15 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#FF9800"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 40,
+  "height": 50,
+  "elements": [
+    {"type": "path", "d": "M 8 28 Q 8 10 20 6 Q 32 10 32 28 L 34 32 L 6 32 Z", "style": {"fill": "{{color}}", "stroke": "#E65100", "strokeWidth": 1.5}},
+    {"type": "rect", "x": 4, "y": 32, "width": 32, "height": 4, "style": {"fill": "#E65100", "rx": 2}},
+    {"type": "circle", "x": 20, "y": 4, "r": 2, "style": {"fill": "#E65100"}},
+    {"type": "path", "d": "M 16 36 Q 16 40 20 40 Q 24 40 24 36", "style": {"fill": "none", "stroke": "#E65100", "strokeWidth": 1.5}},
+    {"type": "text", "x": 20, "y": 48, "text": "{{label}}", "align": "center", "style": {"fontSize": 8, "fill": "#333"}, "if": "label"}
+  ]
+}

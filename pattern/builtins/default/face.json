@@ -1,0 +1,91 @@
+{
+  "params": {
+    "skinColor": {"type": "color", "default": "#fdd0b0"},
+    "hairColor": {"type": "color", "default": "#4a3728"},
+    "eyeColor": {"type": "color", "default": "#3366aa"},
+    "expression": {"type": "string", "default": "neutral", "enum": ["neutral", "happy", "sad", "surprised"]},
+    "angle": {"type": "string", "default": "front", "enum": ["front", "quarter-right", "right", "quarter-left", "left", "back"]},
+    "faceShape": {"type": "string", "default": "round", "enum": ["round", "oval", "angular"]},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 60,
+  "height": 80,
+  "elements": [
+    {"type": "ellipse", "x": 30, "y": 32, "rx": 26, "ry": 30, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1.5}, "if": "angle == 'front' && faceShape == 'round'"},
+    {"type": "ellipse", "x": 30, "y": 32, "rx": 23, "ry": 32, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1.5}, "if": "angle == 'front' && faceShape == 'oval'"},
+    {"type": "path", "d": "M 6 16 L 6 52 Q 6 60 14 62 L 46 62 Q 54 60 54 52 L 54 16 Z", "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1.5}, "if": "angle == 'front' && faceShape == 'angular'"},
+
+    {"type": "ellipse", "x": 30, "y": 14, "rx": 28, "ry": 16, "style": {"fill": "{{hairColor}}"}, "if": "angle == 'front'"},
+
+    {"type": "ellipse", "x": 18, "y": 30, "rx": 4, "ry": 5, "style": {"fill": "#fff", "stroke": "#555", "strokeWidth": 0.8}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 18, "y": 30, "r": 2.5, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 42, "y": 30, "rx": 4, "ry": 5, "style": {"fill": "#fff", "stroke": "#555", "strokeWidth": 0.8}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 42, "y": 30, "r": 2.5, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 30, "y": 40, "rx": 2, "ry": 1.5, "style": {"fill": "#d4a076"}, "if": "angle == 'front'"},
+
+    {"type": "path", "d": "M 22 48 Q 30 54 38 48", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'front' && expression == 'happy'"},
+    {"type": "path", "d": "M 22 48 L 38 48", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'front' && expression == 'neutral'"},
+    {"type": "path", "d": "M 22 52 Q 30 46 38 52", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'front' && expression == 'sad'"},
+    {"type": "ellipse", "x": 30, "y": 50, "rx": 5, "ry": 6, "style": {"fill": "#555"}, "if": "angle == 'front' && expression == 'surprised'"},
+
+
+    {"type": "ellipse", "x": 32, "y": 32, "rx": 24, "ry": 30, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1.5}, "if": "angle == 'quarter-right'"},
+    {"type": "path", "d": "M 8 14 Q 10 2 34 2 Q 58 4 56 20 Q 52 14 42 14 Q 32 12 28 16 Q 22 12 14 14 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'quarter-right'"},
+    {"type": "ellipse", "x": 24, "y": 30, "rx": 3.5, "ry": 5, "style": {"fill": "#fff", "stroke": "#555", "strokeWidth": 0.8}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 25, "y": 30, "r": 2.5, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'quarter-right'"},
+    {"type": "ellipse", "x": 44, "y": 30, "rx": 4, "ry": 5, "style": {"fill": "#fff", "stroke": "#555", "strokeWidth": 0.8}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 45, "y": 30, "r": 2.5, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'quarter-right'"},
+    {"type": "ellipse", "x": 38, "y": 40, "rx": 2, "ry": 1.5, "style": {"fill": "#d4a076"}, "if": "angle == 'quarter-right'"},
+    {"type": "path", "d": "M 26 48 Q 36 54 44 48", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'quarter-right' && expression == 'happy'"},
+    {"type": "path", "d": "M 26 48 L 44 48", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'quarter-right' && expression == 'neutral'"},
+    {"type": "path", "d": "M 26 52 Q 36 46 44 52", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'quarter-right' && expression == 'sad'"},
+    {"type": "ellipse", "x": 36, "y": 50, "rx": 5, "ry": 6, "style": {"fill": "#555"}, "if": "angle == 'quarter-right' && expression == 'surprised'"},
+    {"type": "ellipse", "x": 6, "y": 34, "rx": 4, "ry": 6, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1}, "if": "angle == 'quarter-right'"},
+
+
+    {"type": "ellipse", "x": 28, "y": 32, "rx": 24, "ry": 30, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1.5}, "if": "angle == 'quarter-left'"},
+    {"type": "path", "d": "M 52 14 Q 50 2 26 2 Q 2 4 4 20 Q 8 14 18 14 Q 28 12 32 16 Q 38 12 46 14 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'quarter-left'"},
+    {"type": "ellipse", "x": 16, "y": 30, "rx": 4, "ry": 5, "style": {"fill": "#fff", "stroke": "#555", "strokeWidth": 0.8}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 15, "y": 30, "r": 2.5, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'quarter-left'"},
+    {"type": "ellipse", "x": 36, "y": 30, "rx": 3.5, "ry": 5, "style": {"fill": "#fff", "stroke": "#555", "strokeWidth": 0.8}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 35, "y": 30, "r": 2.5, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'quarter-left'"},
+    {"type": "ellipse", "x": 22, "y": 40, "rx": 2, "ry": 1.5, "style": {"fill": "#d4a076"}, "if": "angle == 'quarter-left'"},
+    {"type": "path", "d": "M 16 48 Q 24 54 34 48", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'quarter-left' && expression == 'happy'"},
+    {"type": "path", "d": "M 16 48 L 34 48", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'quarter-left' && expression == 'neutral'"},
+    {"type": "path", "d": "M 16 52 Q 24 46 34 52", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'quarter-left' && expression == 'sad'"},
+    {"type": "ellipse", "x": 24, "y": 50, "rx": 5, "ry": 6, "style": {"fill": "#555"}, "if": "angle == 'quarter-left' && expression == 'surprised'"},
+    {"type": "ellipse", "x": 54, "y": 34, "rx": 4, "ry": 6, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1}, "if": "angle == 'quarter-left'"},
+
+
+    {"type": "ellipse", "x": 34, "y": 32, "rx": 22, "ry": 30, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1.5}, "if": "angle == 'right'"},
+    {"type": "path", "d": "M 12 16 Q 16 2 38 2 Q 58 4 56 22 Q 52 14 40 14 Q 28 10 18 16 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'right'"},
+    {"type": "ellipse", "x": 44, "y": 30, "rx": 4, "ry": 5, "style": {"fill": "#fff", "stroke": "#555", "strokeWidth": 0.8}, "if": "angle == 'right'"},
+    {"type": "circle", "x": 45, "y": 30, "r": 2.5, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'right'"},
+    {"type": "path", "d": "M 56 36 L 58 40 L 54 42", "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1}, "if": "angle == 'right'"},
+    {"type": "path", "d": "M 38 48 Q 46 54 52 48", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'right' && expression == 'happy'"},
+    {"type": "path", "d": "M 38 48 L 52 48", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'right' && expression == 'neutral'"},
+    {"type": "path", "d": "M 38 52 Q 46 46 52 52", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'right' && expression == 'sad'"},
+    {"type": "ellipse", "x": 46, "y": 50, "rx": 4, "ry": 5, "style": {"fill": "#555"}, "if": "angle == 'right' && expression == 'surprised'"},
+    {"type": "ellipse", "x": 12, "y": 34, "rx": 4, "ry": 6, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1}, "if": "angle == 'right'"},
+
+
+    {"type": "ellipse", "x": 26, "y": 32, "rx": 22, "ry": 30, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1.5}, "if": "angle == 'left'"},
+    {"type": "path", "d": "M 48 16 Q 44 2 22 2 Q 2 4 4 22 Q 8 14 20 14 Q 32 10 42 16 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'left'"},
+    {"type": "ellipse", "x": 16, "y": 30, "rx": 4, "ry": 5, "style": {"fill": "#fff", "stroke": "#555", "strokeWidth": 0.8}, "if": "angle == 'left'"},
+    {"type": "circle", "x": 15, "y": 30, "r": 2.5, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'left'"},
+    {"type": "path", "d": "M 4 36 L 2 40 L 6 42", "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1}, "if": "angle == 'left'"},
+    {"type": "path", "d": "M 8 48 Q 14 54 22 48", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'left' && expression == 'happy'"},
+    {"type": "path", "d": "M 8 48 L 22 48", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'left' && expression == 'neutral'"},
+    {"type": "path", "d": "M 8 52 Q 14 46 22 52", "style": {"fill": "none", "stroke": "#555", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'left' && expression == 'sad'"},
+    {"type": "ellipse", "x": 14, "y": 50, "rx": 4, "ry": 5, "style": {"fill": "#555"}, "if": "angle == 'left' && expression == 'surprised'"},
+    {"type": "ellipse", "x": 48, "y": 34, "rx": 4, "ry": 6, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1}, "if": "angle == 'left'"},
+
+
+    {"type": "ellipse", "x": 30, "y": 32, "rx": 26, "ry": 30, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1.5}, "if": "angle == 'back'"},
+    {"type": "ellipse", "x": 30, "y": 26, "rx": 28, "ry": 28, "style": {"fill": "{{hairColor}}"}, "if": "angle == 'back'"},
+    {"type": "ellipse", "x": 4, "y": 34, "rx": 4, "ry": 6, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1}, "if": "angle == 'back'"},
+    {"type": "ellipse", "x": 56, "y": 34, "rx": 4, "ry": 6, "style": {"fill": "{{skinColor}}", "stroke": "#b8906f", "strokeWidth": 1}, "if": "angle == 'back'"},
+
+    {"type": "text", "x": 30, "y": 75, "text": "{{label}}", "align": "center", "style": {"fontSize": 10, "fill": "#333"}, "if": "label"}
+  ]
+}

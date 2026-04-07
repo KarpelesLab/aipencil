@@ -1,0 +1,15 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#78909C"},
+    "screenColor": {"type": "color", "default": "#BBDEFB"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 70,
+  "height": 50,
+  "elements": [
+    {"type": "rect", "x": 10, "y": 2, "width": 50, "height": 32, "style": {"fill": "{{screenColor}}", "stroke": "{{color}}", "strokeWidth": 2, "rx": 2}},
+    {"type": "path", "d": "M 5 36 L 10 34 L 60 34 L 65 36 L 65 40 Q 65 42 63 42 L 7 42 Q 5 42 5 40 Z", "style": {"fill": "{{color}}", "stroke": "#455A64", "strokeWidth": 1.5}},
+    {"type": "rect", "x": 28, "y": 36, "width": 14, "height": 2, "style": {"fill": "#B0BEC5", "rx": 1}},
+    {"type": "text", "x": 35, "y": 49, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

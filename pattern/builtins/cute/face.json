@@ -1,0 +1,60 @@
+{
+  "params": {
+    "skinColor": {"type": "color", "default": "#fde8d0"},
+    "hairColor": {"type": "color", "default": "#F48FB1"},
+    "eyeColor": {"type": "color", "default": "#333"},
+    "expression": {"type": "string", "default": "neutral", "enum": ["neutral", "happy", "sad", "surprised"]},
+    "angle": {"type": "string", "default": "front", "enum": ["front", "quarter-right", "right", "quarter-left", "left", "back"]},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 60,
+  "height": 70,
+  "elements": [
+    {"type": "circle", "x": 30, "y": 30, "r": 28, "style": {"fill": "{{skinColor}}"}, "if": "angle != 'back'"},
+    {"type": "circle", "x": 30, "y": 30, "r": 28, "style": {"fill": "{{skinColor}}"}, "if": "angle == 'back'"},
+
+    {"type": "path", "d": "M 2 26 Q 2 2 30 2 Q 58 2 58 26 Q 54 20 44 20 Q 36 18 30 24 Q 24 18 16 20 Q 6 20 2 26 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 18, "y": 28, "r": 6, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 20, "y": 26, "r": 2.5, "style": {"fill": "#fff"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 16, "y": 30, "r": 1.5, "style": {"fill": "#fff", "opacity": 0.5}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 42, "y": 28, "r": 6, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 44, "y": 26, "r": 2.5, "style": {"fill": "#fff"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 40, "y": 30, "r": 1.5, "style": {"fill": "#fff", "opacity": 0.5}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 12, "y": 38, "rx": 6, "ry": 4, "style": {"fill": "#FFCDD2", "opacity": 0.5}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 48, "y": 38, "rx": 6, "ry": 4, "style": {"fill": "#FFCDD2", "opacity": 0.5}, "if": "angle == 'front'"},
+    {"type": "path", "d": "M 24 42 Q 30 48 36 42", "style": {"fill": "none", "stroke": "#c48a6a", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'front' && expression == 'happy'"},
+    {"type": "line", "x": 26, "y": 42, "x2": 34, "y2": 42, "style": {"stroke": "#c48a6a", "strokeWidth": 1.2, "strokeLinecap": "round"}, "if": "angle == 'front' && expression == 'neutral'"},
+    {"type": "path", "d": "M 24 44 Q 30 40 36 44", "style": {"fill": "none", "stroke": "#c48a6a", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'front' && expression == 'sad'"},
+    {"type": "circle", "x": 30, "y": 42, "r": 4, "style": {"fill": "#c48a6a"}, "if": "angle == 'front' && expression == 'surprised'"},
+
+    {"type": "path", "d": "M 6 26 Q 8 2 34 2 Q 60 4 58 28 Q 54 20 44 22 Q 36 20 32 26 Q 26 18 16 22 Q 8 22 6 26 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 24, "y": 28, "r": 5, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 26, "y": 26, "r": 2, "style": {"fill": "#fff"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 46, "y": 28, "r": 6, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 48, "y": 26, "r": 2.5, "style": {"fill": "#fff"}, "if": "angle == 'quarter-right'"},
+    {"type": "path", "d": "M 30 42 Q 38 48 44 42", "style": {"fill": "none", "stroke": "#c48a6a", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'quarter-right' && expression == 'happy'"},
+    {"type": "line", "x": 30, "y": 42, "x2": 42, "y2": 42, "style": {"stroke": "#c48a6a", "strokeWidth": 1.2}, "if": "angle == 'quarter-right' && expression == 'neutral'"},
+
+    {"type": "path", "d": "M 54 26 Q 52 2 26 2 Q 0 4 2 28 Q 6 20 16 22 Q 24 20 28 26 Q 34 18 44 22 Q 52 22 54 26 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 14, "y": 28, "r": 6, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 12, "y": 26, "r": 2.5, "style": {"fill": "#fff"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 36, "y": 28, "r": 5, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 34, "y": 26, "r": 2, "style": {"fill": "#fff"}, "if": "angle == 'quarter-left'"},
+    {"type": "path", "d": "M 16 42 Q 22 48 30 42", "style": {"fill": "none", "stroke": "#c48a6a", "strokeWidth": 1.5, "strokeLinecap": "round"}, "if": "angle == 'quarter-left' && expression == 'happy'"},
+    {"type": "line", "x": 18, "y": 42, "x2": 30, "y2": 42, "style": {"stroke": "#c48a6a", "strokeWidth": 1.2}, "if": "angle == 'quarter-left' && expression == 'neutral'"},
+
+    {"type": "path", "d": "M 8 28 Q 12 2 36 2 Q 58 4 56 30 Q 50 18 38 22 Q 28 16 16 24 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'right'"},
+    {"type": "circle", "x": 44, "y": 28, "r": 6, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'right'"},
+    {"type": "circle", "x": 46, "y": 26, "r": 2.5, "style": {"fill": "#fff"}, "if": "angle == 'right'"},
+    {"type": "line", "x": 40, "y": 42, "x2": 50, "y2": 42, "style": {"stroke": "#c48a6a", "strokeWidth": 1.2}, "if": "angle == 'right'"},
+
+    {"type": "path", "d": "M 52 28 Q 48 2 24 2 Q 2 4 4 30 Q 10 18 22 22 Q 32 16 44 24 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'left'"},
+    {"type": "circle", "x": 16, "y": 28, "r": 6, "style": {"fill": "{{eyeColor}}"}, "if": "angle == 'left'"},
+    {"type": "circle", "x": 14, "y": 26, "r": 2.5, "style": {"fill": "#fff"}, "if": "angle == 'left'"},
+    {"type": "line", "x": 10, "y": 42, "x2": 20, "y2": 42, "style": {"stroke": "#c48a6a", "strokeWidth": 1.2}, "if": "angle == 'left'"},
+
+    {"type": "path", "d": "M 0 30 Q 0 -2 30 -2 Q 60 -2 60 30 Q 56 38 46 42 L 42 36 Q 36 30 30 36 Q 24 30 18 36 L 14 42 Q 4 38 0 30 Z", "style": {"fill": "{{hairColor}}"}, "if": "angle == 'back'"},
+
+    {"type": "text", "x": 30, "y": 66, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

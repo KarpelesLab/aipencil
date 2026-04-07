@@ -1,0 +1,47 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#FFE0B2"},
+    "angle": {"type": "string", "default": "front", "enum": ["front", "quarter-right", "right", "quarter-left", "left", "back"]},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 50,
+  "height": 50,
+  "elements": [
+    {"type": "circle", "x": 25, "y": 22, "r": 20, "style": {"fill": "{{color}}"}},
+    {"type": "path", "d": "M 8 14 L 4 0 L 16 10 Z", "style": {"fill": "{{color}}"}, "if": "angle != 'back'"},
+    {"type": "path", "d": "M 42 14 L 46 0 L 34 10 Z", "style": {"fill": "{{color}}"}, "if": "angle != 'back'"},
+    {"type": "path", "d": "M 8 14 L 4 0 L 16 10 Z", "style": {"fill": "{{color}}"}, "if": "angle == 'back'"},
+    {"type": "path", "d": "M 42 14 L 46 0 L 34 10 Z", "style": {"fill": "{{color}}"}, "if": "angle == 'back'"},
+
+    {"type": "circle", "x": 16, "y": 20, "r": 5, "style": {"fill": "#333"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 18, "y": 18, "r": 2, "style": {"fill": "#fff"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 34, "y": 20, "r": 5, "style": {"fill": "#333"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 36, "y": 18, "r": 2, "style": {"fill": "#fff"}, "if": "angle == 'front'"},
+    {"type": "path", "d": "M 23 27 L 25 29 L 27 27", "style": {"fill": "#F48FB1"}, "if": "angle == 'front'"},
+    {"type": "path", "d": "M 21 31 Q 25 35 29 31", "style": {"fill": "none", "stroke": "#c48a6a", "strokeWidth": 1, "strokeLinecap": "round"}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 8, "y": 26, "rx": 5, "ry": 3, "style": {"fill": "#FFCDD2", "opacity": 0.5}, "if": "angle == 'front'"},
+    {"type": "ellipse", "x": 42, "y": 26, "rx": 5, "ry": 3, "style": {"fill": "#FFCDD2", "opacity": 0.5}, "if": "angle == 'front'"},
+
+    {"type": "circle", "x": 22, "y": 20, "r": 4, "style": {"fill": "#333"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 23.5, "y": 18.5, "r": 1.5, "style": {"fill": "#fff"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 38, "y": 20, "r": 5, "style": {"fill": "#333"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 40, "y": 18, "r": 2, "style": {"fill": "#fff"}, "if": "angle == 'quarter-right'"},
+    {"type": "path", "d": "M 31 27 L 33 29 L 35 27", "style": {"fill": "#F48FB1"}, "if": "angle == 'quarter-right'"},
+
+    {"type": "circle", "x": 12, "y": 20, "r": 5, "style": {"fill": "#333"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 10, "y": 18, "r": 2, "style": {"fill": "#fff"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 28, "y": 20, "r": 4, "style": {"fill": "#333"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 26.5, "y": 18.5, "r": 1.5, "style": {"fill": "#fff"}, "if": "angle == 'quarter-left'"},
+    {"type": "path", "d": "M 15 27 L 17 29 L 19 27", "style": {"fill": "#F48FB1"}, "if": "angle == 'quarter-left'"},
+
+    {"type": "circle", "x": 36, "y": 20, "r": 5, "style": {"fill": "#333"}, "if": "angle == 'right'"},
+    {"type": "circle", "x": 38, "y": 18, "r": 2, "style": {"fill": "#fff"}, "if": "angle == 'right'"},
+    {"type": "path", "d": "M 44 26 L 46 28 L 44 30", "style": {"fill": "#F48FB1"}, "if": "angle == 'right'"},
+
+    {"type": "circle", "x": 14, "y": 20, "r": 5, "style": {"fill": "#333"}, "if": "angle == 'left'"},
+    {"type": "circle", "x": 12, "y": 18, "r": 2, "style": {"fill": "#fff"}, "if": "angle == 'left'"},
+    {"type": "path", "d": "M 6 26 L 4 28 L 6 30", "style": {"fill": "#F48FB1"}, "if": "angle == 'left'"},
+
+    {"type": "text", "x": 25, "y": 48, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

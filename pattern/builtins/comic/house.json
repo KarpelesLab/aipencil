@@ -1,0 +1,31 @@
+{
+  "params": {
+    "wallColor": {"type": "color", "default": "#FFF9C4"},
+    "roofColor": {"type": "color", "default": "#E53935"},
+    "doorColor": {"type": "color", "default": "#6D4C41"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 70,
+  "height": 75,
+  "elements": [
+    {"type": "rect", "x": 8, "y": 32, "width": 54, "height": 38, "style": {"fill": "{{wallColor}}", "stroke": "#333", "strokeWidth": 2.5}},
+
+    {"type": "path", "d": "M 3 35 L 35 5 L 67 35 Z", "style": {"fill": "{{roofColor}}", "stroke": "#333", "strokeWidth": 2.5, "strokeLinejoin": "round"}},
+    {"type": "path", "d": "M 10 34 L 35 12 L 60 34", "style": {"fill": "none", "stroke": "#C62828", "strokeWidth": 1.5}},
+
+    {"type": "path", "d": "M 52 20 L 52 8 L 58 8 L 58 15", "style": {"fill": "#B0BEC5", "stroke": "#333", "strokeWidth": 2}},
+
+    {"type": "rect", "x": 15, "y": 38, "width": 14, "height": 14, "style": {"fill": "#BBDEFB", "stroke": "#333", "strokeWidth": 2}},
+    {"type": "line", "x": 22, "y": 38, "x2": 22, "y2": 52, "style": {"stroke": "#333", "strokeWidth": 1.5}},
+    {"type": "line", "x": 15, "y": 45, "x2": 29, "y2": 45, "style": {"stroke": "#333", "strokeWidth": 1.5}},
+
+    {"type": "rect", "x": 41, "y": 38, "width": 14, "height": 14, "style": {"fill": "#BBDEFB", "stroke": "#333", "strokeWidth": 2}},
+    {"type": "line", "x": 48, "y": 38, "x2": 48, "y2": 52, "style": {"stroke": "#333", "strokeWidth": 1.5}},
+    {"type": "line", "x": 41, "y": 45, "x2": 55, "y2": 45, "style": {"stroke": "#333", "strokeWidth": 1.5}},
+
+    {"type": "rect", "x": 27, "y": 50, "width": 16, "height": 20, "style": {"fill": "{{doorColor}}", "stroke": "#333", "strokeWidth": 2.5, "rx": 2}},
+    {"type": "circle", "x": 39, "y": 60, "r": 2, "style": {"fill": "#FFD600", "stroke": "#333", "strokeWidth": 1}},
+
+    {"type": "text", "x": 35, "y": 73, "text": "{{label}}", "align": "center", "style": {"fontSize": 10, "fontWeight": "bold", "fill": "#333"}, "if": "label"}
+  ]
+}

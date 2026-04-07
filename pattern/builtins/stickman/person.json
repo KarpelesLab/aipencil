@@ -1,0 +1,32 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#333"},
+    "angle": {"type": "string", "default": "front", "enum": ["front", "quarter-right", "right", "quarter-left", "left", "back"]},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 40,
+  "height": 90,
+  "elements": [
+    {"type": "circle", "x": 20, "y": 10, "r": 8, "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 2}},
+
+    {"type": "circle", "x": 16, "y": 9, "r": 1.5, "style": {"fill": "{{color}}"}, "if": "angle == 'front'"},
+    {"type": "circle", "x": 24, "y": 9, "r": 1.5, "style": {"fill": "{{color}}"}, "if": "angle == 'front'"},
+    {"type": "line", "x": 16, "y": 14, "x2": 24, "y2": 14, "style": {"stroke": "{{color}}", "strokeWidth": 1.2}, "if": "angle == 'front'"},
+
+    {"type": "circle", "x": 22, "y": 9, "r": 1.5, "style": {"fill": "{{color}}"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 28, "y": 9, "r": 1.5, "style": {"fill": "{{color}}"}, "if": "angle == 'quarter-right'"},
+    {"type": "circle", "x": 26, "y": 9, "r": 1.5, "style": {"fill": "{{color}}"}, "if": "angle == 'right'"},
+
+    {"type": "circle", "x": 12, "y": 9, "r": 1.5, "style": {"fill": "{{color}}"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 18, "y": 9, "r": 1.5, "style": {"fill": "{{color}}"}, "if": "angle == 'quarter-left'"},
+    {"type": "circle", "x": 14, "y": 9, "r": 1.5, "style": {"fill": "{{color}}"}, "if": "angle == 'left'"},
+
+    {"type": "line", "x": 20, "y": 18, "x2": 20, "y2": 50, "style": {"stroke": "{{color}}", "strokeWidth": 2, "strokeLinecap": "round"}},
+    {"type": "line", "x": 20, "y": 28, "x2": 2, "y2": 42, "style": {"stroke": "{{color}}", "strokeWidth": 2, "strokeLinecap": "round"}},
+    {"type": "line", "x": 20, "y": 28, "x2": 38, "y2": 42, "style": {"stroke": "{{color}}", "strokeWidth": 2, "strokeLinecap": "round"}},
+    {"type": "line", "x": 20, "y": 50, "x2": 6, "y2": 72, "style": {"stroke": "{{color}}", "strokeWidth": 2, "strokeLinecap": "round"}},
+    {"type": "line", "x": 20, "y": 50, "x2": 34, "y2": 72, "style": {"stroke": "{{color}}", "strokeWidth": 2, "strokeLinecap": "round"}},
+
+    {"type": "text", "x": 20, "y": 84, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "{{color}}"}, "if": "label"}
+  ]
+}

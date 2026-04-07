@@ -1,0 +1,22 @@
+{
+  "params": {
+    "wallColor": {"type": "color", "default": "#FFECB3"},
+    "roofColor": {"type": "color", "default": "#F48FB1"},
+    "doorColor": {"type": "color", "default": "#CE93D8"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 60,
+  "height": 65,
+  "elements": [
+    {"type": "rect", "x": 6, "y": 26, "width": 48, "height": 34, "style": {"fill": "{{wallColor}}", "rx": 4}},
+    {"type": "path", "d": "M 2 30 L 30 6 L 58 30 Z", "style": {"fill": "{{roofColor}}"}},
+    {"type": "circle", "x": 18, "y": 36, "r": 6, "style": {"fill": "#BBDEFB"}},
+    {"type": "circle", "x": 18, "y": 36, "r": 3, "style": {"fill": "#90CAF9"}},
+    {"type": "circle", "x": 42, "y": 36, "r": 6, "style": {"fill": "#BBDEFB"}},
+    {"type": "circle", "x": 42, "y": 36, "r": 3, "style": {"fill": "#90CAF9"}},
+    {"type": "rect", "x": 23, "y": 42, "width": 14, "height": 18, "style": {"fill": "{{doorColor}}", "rx": 7}},
+    {"type": "circle", "x": 33, "y": 52, "r": 2, "style": {"fill": "#FFD600"}},
+    {"type": "circle", "x": 30, "y": 14, "r": 3, "style": {"fill": "#FFD600"}},
+    {"type": "text", "x": 30, "y": 64, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "#333"}, "if": "label"}
+  ]
+}

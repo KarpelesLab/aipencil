@@ -52,6 +52,20 @@ func (r *Registry) expandElements(elements []*scene.Element) ([]*scene.Element, 
 	result := make([]*scene.Element, 0, len(elements))
 	for _, el := range elements {
 		if el.Type == "use" {
+			if el.Track != "" {
+				// Deferred: will be expanded after layout computes positions.
+				// Pre-set dimensions from pattern def for layout sizing.
+				if def, ok := r.Get(el.Pattern); ok {
+					if el.Width == nil && def.Width > 0 {
+						el.ComputedWidth = def.Width
+					}
+					if el.Height == nil && def.Height > 0 {
+						el.ComputedHeight = def.Height
+					}
+				}
+				result = append(result, el)
+				continue
+			}
 			expanded, err := r.expandUse(el)
 			if err != nil {
 				return nil, err

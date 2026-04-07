@@ -1,0 +1,19 @@
+{
+  "params": {
+    "color": {"type": "color", "default": "#333"},
+    "label": {"type": "string", "default": ""}
+  },
+  "width": 44,
+  "height": 40,
+  "elements": [
+    {"type": "circle", "x": 22, "y": 14, "r": 10, "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 2}},
+    {"type": "path", "d": "M 12 8 Q 6 4 4 12 Q 2 18 8 16", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 2, "strokeLinecap": "round"}},
+    {"type": "path", "d": "M 32 8 Q 38 4 40 12 Q 42 18 36 16", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 2, "strokeLinecap": "round"}},
+    {"type": "circle", "x": 17, "y": 12, "r": 1.5, "style": {"fill": "{{color}}"}},
+    {"type": "circle", "x": 27, "y": 12, "r": 1.5, "style": {"fill": "{{color}}"}},
+    {"type": "ellipse", "x": 22, "y": 18, "rx": 3, "ry": 2, "style": {"fill": "{{color}}"}},
+    {"type": "path", "d": "M 19 22 Q 22 25 25 22", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 1.2, "strokeLinecap": "round"}},
+    {"type": "path", "d": "M 22 24 Q 26 24 30 28 Q 34 32 38 30", "style": {"fill": "none", "stroke": "{{color}}", "strokeWidth": 2, "strokeLinecap": "round"}},
+    {"type": "text", "x": 22, "y": 38, "text": "{{label}}", "align": "center", "style": {"fontSize": 9, "fill": "{{color}}"}, "if": "label"}
+  ]
+}
